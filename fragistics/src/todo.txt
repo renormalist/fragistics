@@ -1,0 +1,19 @@
+- Unrecognized events in osp-logs, that result in EVENT_NONE:
+
+  577:31 Weapon_Stats: 1 MachineGun:43:9:0:0 Shotgun:22:3:12:0 G.Launcher:0:0:1:0 R.Launcher:89:34:25:3 LightningGun:0:0:8:0 Railgun:24:7:9:1 Given:2660 Recvd:1602 Armor:1460 Health:1115
+  577:28 Game_End: Timelimit
+  577:50 Vote Passed: map pro-q3dm6
+  577:50 Voted: map pro-q3dm6
+  578:51 ServerTime:    20020414214752  21:47:52 (14 Apr 2002)
+  578:51 Game_Start:
+  5956:33Warmup:
+  578:51 ClientBegin: 0
+
+
+
+- Voted-lines (with following "say"?) in osp-logs miss the trailing
+  newline:
+
+  577:50 Voted: map pro-q3dm634672.1 say: ^1]^3a^1[^0le^1X^0or: k
+
+

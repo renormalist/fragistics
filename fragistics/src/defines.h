@@ -110,7 +110,6 @@ using namespace std;
 //ITEM_LAST must be last
 
 
-
 							
 
 //events
@@ -127,7 +126,6 @@ using namespace std;
 #define EVENT_LIMITHIT		10
 #define EVENT_PLAYER_SCORE	11
 #define EVENT_TEAM_SCORE	12
-
 
 
 //Games
@@ -211,41 +209,6 @@ using namespace std;
 #define DB_MAX				4
 
 
-
-
-class GameEvent {
-public:
-	int event;		//type of event
-	int time_min;	//minutes from start of game of event
-	int time_sec;	//seconds after minute of event  0 - 60
-	int realtime;	//time_t type time of event
-					//new game		player info		kill		item		limit			score	teamscore	say / say team
-	int player;		//				player			killer		pickuper					player	red score
-	int other;		//				skill(bot)		killee		item						score	blue score
-	int how;		//game type		hc				weapon					1=time 2=frag	ping
-	char name[50];	//map name		player name 
-	char model[50];	//				model
-	int team;		//capture limit	team
-	string msg;		//init str		info str		kill msg	item name										message
-	int wins;		//frag limit	1v1 wins
-	int	losses;		//time limit	1v1 losses
-
-
-	GameEvent(){
-		event=EVENT_NONE;
-		time_min=0;
-		time_sec=0;
-		player=-1;
-		other=ITEM_NONE;
-		name[0]='\0';
-		model[0]='\0';
-		msg.erase();
-		team=TEAM_FFA;
-		wins=0;
-		losses=0;
-	}
-	~GameEvent(){};
-};
 
 
 class Games;

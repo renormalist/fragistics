@@ -5,9 +5,13 @@
 #
 
 OFILES = database.o crosstable.o htmlfile.o game.o player.o os.o main.o \
-         stats.o settings.o
+         stats.o settings.o gameslogparser.o fileparser.o gameevent.o \
+         aux.o
+
 SOURCES = database.cpp crosstable.cpp htmlfile.cpp game.cpp player.cpp \
-          os.cpp main.cpp stats.cpp settings.cpp
+          os.cpp main.cpp stats.cpp settings.cpp gameslogparser.cpp \
+          fileparser.cpp gameevent.cpp aux.cpp
+
 TARGET = fragistics
 
 RM = /bin/rm -f

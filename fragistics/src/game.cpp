@@ -44,6 +44,159 @@ char* toucase( char* ptr){
 	return ptr;
 }
 
+Game::Game ( char* map, int type, int startsec, int frag_limit, int time_limit, int capture_limit, Stats *st_)
+{
+    st=st_;
+    mapname=toucase(map);
+    gametype=type;
+    
+    //		total_kills=0;
+    total_items=0;
+    total_time_sec=-startsec;
+    msgs=0;
+    msgs_team=0;
+    gameover=false;
+    gameoverreason=0;
+    cont1v1=false;
+    gamenumber=0;
+    
+    fraglimit=frag_limit;
+    timelimit=time_limit;
+    capturelimit=capture_limit;
+    
+    int i=0;
+    for(i=0;i<GAME_MAX_SIMU_CLIENTS;i++)
+	pindex[i]=NULL;
+    for(i=0;i<TEAM_MAX;i++)
+	teamscores[i]=0;
+    for(i=0;i<MAX_KILLTYPE;i++)
+	all_kills[i]=0;
+    for(i=0;i<ITEM_LAST;i++)
+	all_items[i]=0;
+}
+
+Game::~Game()
+{
+    // NOP
+}
+
+int Game::GetType()
+{
+    return gametype;
+}
+
+int Game::GetGameOverReason ()
+{
+    return gameoverreason;
+}
+
+//only valid after endgame event;
+int Game::GetTotalTime()
+{
+    return total_time_sec;
+}
+
+int Game::GetTotalItems()
+{
+    return total_items;
+}
+
+PList* Game::GetPlayers()
+{
+    return (&players);
+}
+
+int Game::GetTeamScore(int team)
+{
+    if(team>=0 && team<TEAM_MAX)
+	return teamscores[team];
+    return 0;
+}
+    
+string Game::GetMapname()
+{
+    return mapname;
+}
+
+int Game::GetKills(int type=0)
+{
+    return all_kills[type];
+}
+
+void Game::GetTimeStr(char *buf)
+{
+    int min,sec;
+    min=total_time_sec/60;
+    sec=total_time_sec%60;
+    
+    if(sec<10){
+	sprintf(buf,"%d:0%d",min,sec);
+    }else{
+	sprintf(buf,"%d:%d",min,sec);
+    }
+}
+
+Player* Game::GetPlayerFromIndex(int index)
+{
+    return pindex[index];
+}
+
+bool Game::isGameOver()
+{
+    return gameover;
+}
+
+int Game::GetMsgs()
+{
+    return msgs;
+}
+
+int Game::GetMsgsTeam()
+{
+    return msgs_team;
+}
+
+int Game::GetItem(int type)
+{
+    return all_items[type];
+}
+
+int Game::GetGameNumber()
+{
+    return gamenumber;
+}
+
+void Game::SetGameNumber(int gn)
+{
+    gamenumber=gn;
+}
+
+CrossTable* Game::GetKillTable(int num)
+{
+    return &kills[num];
+}
+
+//used for continueing 1V1 games
+void Game::GameReset1v1(int time)
+{
+    gameover=false;
+    gameoverreason=0;
+    total_time_sec-=time;
+    cont1v1=true;
+    Player *p;
+    p=players.GetFirst();
+    if(p!=NULL){
+	do{
+	    p->AddTime((-time));
+	}while((p=players.GetNext())!=NULL);
+    }
+}
+
+
+//
+// --------------------------------------------------------------------
+//
+
 void Game::HandleEvent(GameEvent *evt){
 	switch(evt->event){
 
@@ -712,8 +865,11 @@ void Map::AddGame(Game *game){
 		all_kills[i]+=game->GetKills(i);
 	for(i=0;i<ITEM_LAST;i++)
 		all_items[i]+=game->GetItem(i);
-	
+
+	printf ("DBG: game->GetType() = %d\n", game->GetType()); // ss5
 	gametype[game->GetType()]++;
+	printf ("DBG: gametype[game->GetType()] = %d\n", gametype[game->GetType()]); // ss5
+	
 	gameoverreason[game->GetGameOverReason()];
 	modified=true;
 

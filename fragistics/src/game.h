@@ -14,7 +14,7 @@ see game.cpp or main.cpp for license info
 #include "defines.h"
 #include "player.h"
 #include "crosstable.h"
-
+#include "gameevent.h"
 
 char* toucase( char* ptr);
 
@@ -51,96 +51,43 @@ class Game {
 	Stats *st;
 
 public:
-	Game( char* map, int type, int startsec, int frag_limit, int time_limit, int capture_limit, Stats *st_){
-		st=st_;
-		mapname=toucase(map);
-		gametype=type;
+    Game( char* map, int type, int startsec, int frag_limit, int time_limit, int capture_limit, Stats *st_);
+    ~Game();
+    
 
-//		total_kills=0;
-		total_items=0;
-		total_time_sec=-startsec;
-		msgs=0;
-		msgs_team=0;
-		gameover=false;
-		gameoverreason=0;
-		cont1v1=false;
-		gamenumber=0;
-
-		fraglimit=frag_limit;
-		timelimit=time_limit;
-		capturelimit=capture_limit;
-
-		int i=0;
-		for(i=0;i<GAME_MAX_SIMU_CLIENTS;i++)
-			pindex[i]=NULL;
-		for(i=0;i<TEAM_MAX;i++)
-			teamscores[i]=0;
-		for(i=0;i<MAX_KILLTYPE;i++)
-			all_kills[i]=0;
-		for(i=0;i<ITEM_LAST;i++)
-			all_items[i]=0;
-	}
-	~Game(){}
-
-	int GetType(){ return gametype;};
-	int GetGameOverReason(){return gameoverreason;};
-
-	void HandleEvent(GameEvent *evt);
-
-//	void WriteResults( int num);
-
-	int GetTotalTime(){ return total_time_sec;}; //only valid after endgame event;
-	int GetTotalItems(){ return total_items;};
-
-	PList* GetPlayers(){return (&players);};
-	int GetTeamScore(int team){
-		if(team>=0 && team<TEAM_MAX)
-			return teamscores[team];
-		return 0;
-	};
-
-	string GetMapname(){return mapname;};
-	int GetKills(int type=0){return all_kills[type];};
-	void GetTimeStr(char *buf){
-		int min,sec;
-		min=total_time_sec/60;
-		sec=total_time_sec%60;
-		
-		if(sec<10){
-			sprintf(buf,"%d:0%d",min,sec);
-		}else{
-			sprintf(buf,"%d:%d",min,sec);
-		}
-	};
-
-	Player* GetPlayerFromIndex(int index){return pindex[index];};
-
-	bool isGameOver(){return gameover;};
-
-	int GetMsgs(){return msgs;};
-	int GetMsgsTeam(){return msgs_team;};
-	int GetItem(int type){return all_items[type];};
-
-	int GetGameNumber(){return gamenumber;};
-	void SetGameNumber(int gn){gamenumber=gn;};
-
-	void GetVariableValue(string *variable, string *value, Stats *stats);
-
-	CrossTable* GetKillTable(int num){return &kills[num];};
-
-	void GameReset1v1(int time){  //used for continueing 1V1 games
-		gameover=false;
-		gameoverreason=0;
-		total_time_sec-=time;
-		cont1v1=true;
-		Player *p;
-		p=players.GetFirst();
-		if(p!=NULL){
-			do{
-				p->AddTime((-time));
-			}while((p=players.GetNext())!=NULL);
-		}
-	}; 
+    int GetType();
+    int GetGameOverReason();
+    
+    void HandleEvent           (GameEvent *evt);
+    
+    //  void WriteResults      ( int num);
+    
+    int GetTotalTime           (); //only valid after endgame event;
+    int GetTotalItems          ();
+    
+    PList* GetPlayers          ();
+    int GetTeamScore           (int team);
+    
+    string GetMapname          ();
+    int GetKills               (int type=0);
+    void GetTimeStr            (char *buf);
+    
+    Player* GetPlayerFromIndex (int index);
+    
+    bool isGameOver            ();
+    
+    int GetMsgs                ();
+    int GetMsgsTeam            ();
+    int GetItem                (int type);
+    
+    int GetGameNumber          ();
+    void SetGameNumber         (int gn);
+    
+    void GetVariableValue      (string *variable, string *value, Stats *stats);
+    
+    CrossTable* GetKillTable   (int num);
+    
+    void GameReset1v1          (int time);  //used for continueing 1V1 games
 };
 
 
