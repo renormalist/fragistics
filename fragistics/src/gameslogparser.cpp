@@ -259,7 +259,7 @@ bool GameslogParser::Parse(int startline){
 GameEvent* GameslogParser::ParseLine(char *line){
     GameEvent *evt=new GameEvent();
     char *ptr1,*ptr2;
-    char *eventMsg;
+    std::string eventMsg;
     line[1023]='\0';
     
     if(line!=NULL){
@@ -290,7 +290,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		if(!strcmp("InitGame:",ptr1)){
 		    evt->event = EVENT_GAMESTART;
 		    evt->msg = (ptr2+1);
-		    eventMsg = evt->msg.c_str();
+		    eventMsg = evt->msg;
 		    
 		    ptr1=strstr(ptr2+1,"mapname\\");
 		    if(ptr1!=NULL){
@@ -302,7 +302,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 			    strcpy(evt->name ,ptr1);
 			    
 			    //ptr1=strstr(ptr2+1,"g_gametype\\"); //ss5: WRONG
-			    ptr1=strstr(eventMsg,"g_gametype\\"); // ss5
+			    ptr1=strstr(eventMsg.c_str(),"g_gametype\\"); // ss5
 			    if(ptr1!=NULL){
 				ptr1+=11;
 				evt->how=atoi(ptr1);
@@ -310,21 +310,21 @@ GameEvent* GameslogParser::ParseLine(char *line){
 			    }
 			    
 			    //ptr1=strstr(ptr2+1,"capturelimit\\"); // ss5
-			    ptr1=strstr(eventMsg,"capturelimit\\"); // ss5
+			    ptr1=strstr(eventMsg.c_str(),"capturelimit\\"); // ss5
 			    if(ptr1!=NULL){
 				ptr1+=13;
 				evt->team=atoi(ptr1);
 			    }
 			    
 			    //ptr1=strstr(ptr2+1,"fraglimit\\"); // ss5
-			    ptr1=strstr(eventMsg,"fraglimit\\"); // ss5
+			    ptr1=strstr(eventMsg.c_str(),"fraglimit\\"); // ss5
 			    if(ptr1!=NULL){
 				ptr1+=10;
 				evt->wins=atoi(ptr1);
 			    }
 			    
 			    //ptr1=strstr(ptr2+1,"timelimit\\"); // ss5
-			    ptr1=strstr(eventMsg,"timelimit\\"); // ss5
+			    ptr1=strstr(eventMsg.c_str(),"timelimit\\"); // ss5
 			    if(ptr1!=NULL){
 				ptr1+=10;
 				evt->losses=atoi(ptr1);
