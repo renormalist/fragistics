@@ -1022,15 +1022,6 @@ else
 fi
 
 
-PERL_SITELIB=`($PERL -e 'use Config; print $Config{sitelib};') 2>/dev/null`
-if test -z "$PERL_SITELIB" -o ! -d "$PERL_SITELIB"; then
-	echo "$ac_t""unable to determine perl module directory $PERL_SITELIB" 1>&6
-        exit 1
-else
-	echo "checking for perl site lib... $PERL_SITELIB"
-fi
-
-
 
 
 trap '' 1 2 15
@@ -1205,7 +1196,6 @@ s%@PERL@%$PERL%g
 s%@GREP@%$GREP%g
 s%@AWK@%$AWK%g
 s%@CXX@%$CXX%g
-s%@PERL_SITELIB@%$PERL_SITELIB%g
 s%@PKGLIBDIR@%$PKGLIBDIR%g
 
 CEOF

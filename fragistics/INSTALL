@@ -2,5 +2,5 @@
 			     INSTALLATION
 
     ./configure
-    make
-    make install                      (as user "root")
+    make                    (ignore compiler warnings)
+    make install            (as user "root")
