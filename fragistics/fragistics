@@ -271,8 +271,7 @@ sub spool {
 
   foreach my $gameslog (@gameslogspool) {
     print "Process $gameslog ...\n" if $VERBOSE;
-    print "  process_log ($FRAGISTICS_SPOOL".'/'."$gameslog);\n";
-    #process_log ($FRAGISTICS_SPOOL.'/'.$gameslog);
+    process_log ($FRAGISTICS_SPOOL.'/'.$gameslog);
   }
 }
 
