@@ -1,0 +1,22 @@
+<html><head>
+<title>Player List</TITLE>
+</head>
+<body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<center><h1>Player List</H1>
+<P><HR><P>
+<a href="gamelist.html">Game List</a> <a href="maplist.html">Map List</a> <a href="stats.html">Overall stats</a><P>
+$$playerlistheader$$
+<P><HR><P>
+
+<table>
+<TR>
+@@LOOP( LOOP_STATS_PLAYERS.PLAYER_NAME.PLAIN )@@
+<TD>##PLAYER_NAME## <a href="##PLAYER_NAME.FILE##.html">info</a></TD>
+**IF( PLAYER.INDEX %= "5" )** </TR><TR> **ENDIF** 
+@@ENDLOOP@@
+</TR></table>
+
+<P>
+</CENTER>
+<P><HR><P>##CREDIT##
+</body></html>

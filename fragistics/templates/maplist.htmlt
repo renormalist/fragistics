@@ -1,0 +1,25 @@
+<html><head>
+<title>Maps Played</title>
+</head><body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<CENTER>
+<h2>Maps Played</h2>
+Last Updated: ##NOW##<BR>
+<a href="stats.html">Overall Stats</a> <a href="gamelist.html">Game List</a> <a href="playerlist.html">Player List</a>
+
+<P><HR><P>
+
+
+<TABLE border=1>
+<TR><TD>Map</TD>
+<TD>Games</TD><TD>Total Time</TD>
+<TD>Total Players</TD><TD>Total Kills</TD></TR>
+@@LOOP( LOOP_MAPS )@@
+<TR><TD><a href="map_##MAP_MAPNAME##.html">##MAP_MAPNAME##</a></TD>
+<TD>##MAP_GAMES##</TD><TD>##MAP_TIME.STR##</TD>
+<TD>##MAP_PLAYERCOUNT##</TD><TD>##MAP_TOTKILLS##</TD></TR>
+@@ENDLOOP@@
+
+</table>
+<P><HR><P>
+##CREDIT##
+</body></html>

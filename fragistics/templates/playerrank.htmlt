@@ -1,0 +1,116 @@
+<html><head>
+<title>Player Rank</TITLE>
+</head>
+<body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<center><h1>Player Rank - Kills, Deaths, Suicides</H1>
+Last Updated: ##NOW##<BR>
+<P><HR><P>
+<a href="playerlist.html">Player List</a> <a href="gamelist.html">Game List</a> <a href="maplist.html">Map List</a> <a href="stats.html">Overall stats</a><P>
+$$playerlistheader$$
+<P><HR><P>
+<center><h2>Player Ranking</h2></center><P>
+
+<TABLE><TR><TD>#</TD>
+<TD colspan=2>Name</TD>
+<TD>Rank</TD>
+<TD>Kills</TD><TD>Deaths</TD><TD>Suicides</TD><TD>Frags</TD>
+<TD>EFF %</TD><TD>Skill</TD>
+<TD>Games</TD><TD>Time</TD>
+<TD>Wins</TD><TD>Placed</TD>
+<TD> Weapon Useage<BR>
+<img src="##USER_image_path##/weapons/gauntlet.gif" alt="Gauntlet" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/machinegun.gif" alt="Machinegun" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/shotgun.gif" alt="Shotgun" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/grenade.gif" alt="Grenage Launcher" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/rocket.gif" alt="Rocket Launcher" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/lightning.gif" alt="Lightning Gun" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/railgun.gif" alt="Railgun" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/plasma.gif" alt="Plasma Gun" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/bfg.gif" alt="BFG" width=16 height=16>&nbsp;
+<img src="##USER_image_path##/weapons/telefrag.gif" alt="Telefrag" width=16 height=16>
+</TD>
+</TR>
+
+@@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_RANK )@@
+<TR **IF( PLAYER.INDEX % "2" )** bgcolor="#202020" **ENDIF** >
+<TD>##PLAYER.INDEX##</TD>
+<TD>##PLAYER_NAME##</TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a></TD>
+<TD>##PLAYER_RANK##</TD>
+<TD>##PLAYER_KILLS.ALL##</TD><TD>##PLAYER_DEATHS.ALL##</TD><TD>##PLAYER_SUICIDES.ALL##</TD><TD>##PLAYER_FRAGS.ALL##</TD>
+<TD>##PLAYER_EFF.TOTAL##</TD><TD>##PLAYER_SKILL.TOTAL##</TD>
+<TD>##PLAYER_GAMES##</TD><TD>##PLAYER_TOTTIME.STR##</TD>
+<TD>##PLAYER_WINS.FFA##</TD><TD>##PLAYER_FFAWINPLACE##</TD>
+
+
+<TD>&nbsp;
+<img src="##USER_image_path##/weapons/gauntlet.gif" 
+alt="Gauntlet !!%.1f,(PLAYER_KILLS.GAUNTLET_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.GAUNTLET_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.GAUNTLET_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/machinegun.gif" 
+alt="Machinegun !!%.1f,(PLAYER_KILLS.MACHINEGUN_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.MACHINEGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.MACHINEGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/shotgun.gif" 
+alt="Shotgun !!%.1f,(PLAYER_KILLS.SHOTGUN_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.SHOTGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.SHOTGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/grenade.gif" 
+alt="Grenage Launcher !!%.1f,(PLAYER_KILLS.A_GRENADE_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.A_GRENADE_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.A_GRENADE_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/rocket.gif" 
+alt="Rocket Launcher !!%.1f,(PLAYER_KILLS.A_ROCKET_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.A_ROCKET_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.A_ROCKET_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/lightning.gif" 
+alt="Lightning Gun !!%.1f,(PLAYER_KILLS.LIGHTNING_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.LIGHTNING_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.LIGHTNING_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/railgun.gif" 
+alt="Railgun !!%.1f,(PLAYER_KILLS.RAILGUN_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.RAILGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.RAILGUN_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/plasma.gif" 
+alt="Plasma Gun !!%.1f,(PLAYER_KILLS.A_PLASMA_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.A_PLASMA_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.A_PLASMA_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/bfg.gif" 
+alt="BFG !!%.1f,(PLAYER_KILLS.A_BFG_KILL / PLAYER_KILLS.TOTAL ) * 100!!%" 
+align="center"
+width="!!%.0f,((PLAYER_KILLS.A_BFG_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.A_BFG_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;
+<img src="##USER_image_path##/weapons/telefrag.gif" 
+alt="Telefrag !!%.1f,(PLAYER_KILLS.TELEFRAG_KILL / PLAYER_KILLS.TOTAL ) * 100!!%"
+ align="center"
+width="!!%.0f,((PLAYER_KILLS.TELEFRAG_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!"
+height="!!%.0f,((PLAYER_KILLS.TELEFRAG_KILL / PLAYER_KILLS.TOTAL ) * 128) + 1!!">
+&nbsp;</TD>
+
+</TR>
+@@ENDLOOP@@
+
+</TABLE>
+
+
+<P>
+</CENTER>
+<P><HR><P>##CREDIT##
+</body></html>

@@ -1,0 +1,157 @@
+$$mapheader$$
+<a href="map_##MAP_MAPNAME##.html">Map Scores</A> <a href="mapktable_##MAP_MAPNAME##.html">Kill Tables</A> <a href="maprank_##MAP_MAPNAME##.html">Player Rank</A><BR>
+<P>
+<table border=1>
+<TR><TD rowspan=3>Legend:</TD>
+<TD bgcolor="##USER_color_total##">Total Stats</TD></TR>
+<TR><TD bgcolor="##USER_color_pergame##">Per Game</TD></TR>
+<TR><TD bgcolor="##USER_color_perhour##">Per Hour</TD></TR>
+</TABLE>
+&nbsp;<P>
+
+@@LOOP( LOOP_MAP_PLAYERS )@@
+
+<Table bgcolor="#202020">
+
+<TR><TD colspan=2>
+<font size=+2>##PLAYER_NAME##</font> <img src="##USER_image_path##/models/##PLAYER_MODELIMG##" align=right><BR>
+##PLAYER_GAMES## Games played<BR>
+Time Played: ##PLAYER_TOTTIME.STR## &nbsp; Average Life: !!%.0f,PLAYER_TOTTIME / PLAYER_DEATHS.ALL!! seconds<BR>
+##PLAYER_MSGS## Msgs, ##PLAYER_TEAMMSGS## Team Msgs<BR>
+Ping: ##PLAYER_AVEPING## &nbsp; HC: ##PLAYER_AVEHC##<BR>
+**IF( PLAYER_AVEBOTSKILL >= "0" )**Bot skill: ##PLAYER_AVEBOTSKILL##<BR> **ENDIF** 
+Score: ##PLAYER_SCORE##</TD></TR>
+
+<TR><TD valign=top>
+Kill Stats:
+<TABLE border=1><TR><TD></TD><TD>Kills</TD><TD>Deaths</TD><TD>Suicides</TD><TD>Frags</TD><TD>Kill Diff</TD><TD>Eff %</TD><TD>Skill</TD></TR>
+<TR><TD rowspan=3>All Weapons</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.TOTAL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.TOTAL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.TOTAL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.TOTAL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.TOTAL##</TD><TD rowspan=3>##PLAYER_EFF.TOTAL##</TD><TD rowspan=3>##PLAYER_SKILL.TOTAL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.TOTAL##</TD><TD>##PLAYER_PERGAME_DEATHS.TOTAL##</TD><TD>##PLAYER_PERGAME_SUICIDES.TOTAL##</TD><TD>##PLAYER_PERGAME_FRAGS.TOTAL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.TOTAL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.TOTAL##</TD><TD>##PLAYER_PERHOUR_DEATHS.TOTAL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.TOTAL##</TD><TD>##PLAYER_PERHOUR_FRAGS.TOTAL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.TOTAL##</TD></TR>
+
+<TR><TD rowspan=3>Gauntlet</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.GAUNTLET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.GAUNTLET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.GAUNTLET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.GAUNTLET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.GAUNTLET_KILL##</TD><TD rowspan=3>##PLAYER_EFF.GAUNTLET_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.GAUNTLET_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.GAUNTLET_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.GAUNTLET_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.GAUNTLET_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.GAUNTLET_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.GAUNTLET_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Machinegun</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.MACHINEGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.MACHINEGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.MACHINEGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.MACHINEGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.MACHINEGUN_KILL##</TD><TD rowspan=3>##PLAYER_EFF.MACHINEGUN_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.MACHINEGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.MACHINEGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.MACHINEGUN_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.MACHINEGUN_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Shotgun</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.SHOTGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.SHOTGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.SHOTGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.SHOTGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.SHOTGUN_KILL##</TD><TD rowspan=3>##PLAYER_EFF.SHOTGUN_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.SHOTGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.SHOTGUN_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.SHOTGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.SHOTGUN_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.SHOTGUN_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.SHOTGUN_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Grenade</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.A_GRENADE_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.A_GRENADE_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.A_GRENADE_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.A_GRENADE_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.A_GRENADE_KILL##</TD><TD rowspan=3>##PLAYER_EFF.A_GRENADE_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.A_GRENADE_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.A_GRENADE_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.A_GRENADE_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.A_GRENADE_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.A_GRENADE_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.A_GRENADE_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Rocket</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.A_ROCKET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.A_ROCKET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.A_ROCKET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.A_ROCKET_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.A_ROCKET_KILL##</TD><TD rowspan=3>##PLAYER_EFF.A_ROCKET_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.A_ROCKET_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.A_ROCKET_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.A_ROCKET_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.A_ROCKET_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.A_ROCKET_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.A_ROCKET_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Lightning</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.LIGHTNING_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.LIGHTNING_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.LIGHTNING_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.LIGHTNING_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.LIGHTNING_KILL##</TD><TD rowspan=3>##PLAYER_EFF.LIGHTNING_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.LIGHTNING_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.LIGHTNING_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.LIGHTNING_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.LIGHTNING_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.LIGHTNING_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.LIGHTNING_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Railgun</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.RAILGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.RAILGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.RAILGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.RAILGUN_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.RAILGUN_KILL##</TD><TD rowspan=3>##PLAYER_EFF.RAILGUN_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.RAILGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.RAILGUN_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.RAILGUN_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.RAILGUN_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.RAILGUN_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.RAILGUN_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.RAILGUN_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.RAILGUN_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.RAILGUN_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.RAILGUN_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.RAILGUN_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Plasma</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.A_PLASMA_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.A_PLASMA_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.A_PLASMA_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.A_PLASMA_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.A_PLASMA_KILL##</TD><TD rowspan=3>##PLAYER_EFF.A_PLASMA_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.A_PLASMA_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.A_PLASMA_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.A_PLASMA_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.A_PLASMA_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.A_PLASMA_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.A_PLASMA_KILL##</TD></TR>
+
+<TR><TD rowspan=3>BFG</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.A_BFG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.A_BFG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.A_BFG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.A_BFG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.A_BFG_KILL##</TD><TD rowspan=3>##PLAYER_EFF.A_BFG_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.A_BFG_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.A_BFG_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.A_BFG_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.A_BFG_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.A_BFG_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.A_BFG_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.A_BFG_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.A_BFG_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.A_BFG_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.A_BFG_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.A_BFG_KILL##</TD></TR>
+
+<TR><TD rowspan=3>Telefrag</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLS.TELEFRAG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_DEATHS.TELEFRAG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_SUICIDES.TELEFRAG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_FRAGS.TELEFRAG_KILL##</TD><TD bgcolor="##USER_color_total##">##PLAYER_KILLDIFF.TELEFRAG_KILL##</TD><TD rowspan=3>##PLAYER_EFF.TELEFRAG_KILL##</TD><TD rowspan=3>##PLAYER_SKILL.TELEFRAG_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_KILLS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERGAME_DEATHS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERGAME_SUICIDES.TELEFRAG_KILL##</TD><TD>##PLAYER_PERGAME_FRAGS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERGAME_KILLDIFF.TELEFRAG_KILL##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_KILLS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERHOUR_DEATHS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.TELEFRAG_KILL##</TD><TD>##PLAYER_PERHOUR_FRAGS.TELEFRAG_KILL##</TD><TD>##PLAYER_PERHOUR_KILLDIFF.TELEFRAG_KILL##</TD></TR>
+</TABLE><BR>
+<TABLE border=1>
+<TR><TD colspan=2>Other Suicides:</TD><TD>Drown</TD><TD>##PLAYER_SUICIDES.SELF_WATER##</TD>
+<TD>Slime</TD><TD>##PLAYER_SUICIDES.SELF_SLIME##</TD><TD>Lava</TD><TD>##PLAYER_SUICIDES.SELF_LAVA##</TD></TR>
+<TR><TD>Crush</TD><TD>##PLAYER_SUICIDES.SELF_CRUSH##</TD><TD>Crater</TD><TD>##PLAYER_SUICIDES.SELF_FALLING##</TD>
+<TD>Trigger Hurt</TD><TD>##PLAYER_SUICIDES.SELF_TRIGGER_HURT##</TD><TD>Console kill</TD><TD>##PLAYER_SUICIDES.SELF_SUICIDE##</TD></TR>
+</TABLE>
+
+</TD><TD valign=top>
+
+Item Stats:  Total Items: ##PLAYER_ITEMS##<BR>
+<TABLE border=1>
+<TR><TD rowspan=3>Gauntlet</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.GAUNTLET##</TD>			<TD rowspan=3></TD><TD rowspan=3></TD>
+<TD rowspan=3>Armor Shard</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.ARMOR_SHARD##</TD>		<TD rowspan=3></TD><TD rowspan=3></TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.GAUNTLET##</TD>		
+		<TD>##PLAYER_PERGAME_ITEM.ARMOR_SHARD##</TD>													</TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.GAUNTLET##</TD>		
+		<TD>##PLAYER_PERHOUR_ITEM.ARMOR_SHARD##</TD>													</TR>
+	
+<TR><TD rowspan=3>Machinegun</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.MACHINEGUN##</TD>		<TD rowspan=3>Bullets</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.MACHINEGUN_A##</TD>
+<TD rowspan=3>Yellow Armor</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.ARMOR_YELLOW##</TD>		<TD rowspan=3>Battle Suit</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.BATTLESUIT##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.MACHINEGUN##</TD>					<TD>##PLAYER_PERGAME_ITEM.MACHINEGUN_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.ARMOR_YELLOW##</TD>													<TD>##PLAYER_PERGAME_ITEM.BATTLESUIT##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.MACHINEGUN##</TD>					<TD>##PLAYER_PERHOUR_ITEM.MACHINEGUN_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.ARMOR_YELLOW##</TD>													<TD>##PLAYER_PERHOUR_ITEM.BATTLESUIT##</TD></TR>
+
+<TR><TD rowspan=3>Shotgun</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.SHOTGUN##</TD>			<TD rowspan=3>Shells</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.SHOTGUN_A##</TD>
+<TD rowspan=3>Red Armor</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.ARMOR_RED##</TD>			<TD rowspan=3>Flight</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.FLIGHT##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.SHOTGUN##</TD>						<TD>##PLAYER_PERGAME_ITEM.SHOTGUN_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.ARMOR_RED##</TD>														<TD>##PLAYER_PERGAME_ITEM.FLIGHT##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.SHOTGUN##</TD>						<TD>##PLAYER_PERHOUR_ITEM.SHOTGUN_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.ARMOR_RED##</TD>														<TD>##PLAYER_PERHOUR_ITEM.FLIGHT##</TD></TR>
+
+<TR><TD rowspan=3>Grenade Launcher</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.GRENADEL##</TD>	<TD rowspan=3>Grenades</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.GRENADEL_A##</TD>
+<TD rowspan=3>+5 Health</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.HEALTH_5##</TD>			<TD rowspan=3>Haste</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.HASTE##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.GRENADEL##</TD>						<TD>##PLAYER_PERGAME_ITEM.GRENADEL_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.HEALTH_5##</TD>														<TD>##PLAYER_PERGAME_ITEM.HASTE##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.GRENADEL##</TD>						<TD>##PLAYER_PERHOUR_ITEM.GRENADEL_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.HEALTH_5##</TD>														<TD>##PLAYER_PERHOUR_ITEM.HASTE##</TD></TR>
+
+<TR><TD rowspan=3>Rocket Launcher</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.ROCKETL##</TD>	<TD rowspan=3>Rockets</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.ROCKETL_A##</TD>
+<TD rowspan=3>25 Health</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.HEALTH_25##</TD>			<TD rowspan=3>Invisibility</TD bgcolor="##USER_color_total##"><TD>##PLAYER_ITEM.INVIS##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.ROCKETL##</TD>						<TD>##PLAYER_PERGAME_ITEM.ROCKETL_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.HEALTH_25##</TD>														<TD>##PLAYER_PERGAME_ITEM.INVIS##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.ROCKETL##</TD>						<TD>##PLAYER_PERHOUR_ITEM.ROCKETL_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.HEALTH_25##</TD>														<TD>##PLAYER_PERHOUR_ITEM.INVIS##</TD></TR>
+
+<TR><TD rowspan=3>Lightning Gun</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.LIGHTNING##</TD>	<TD rowspan=3>Lightning</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.LIGHTNING_A##</TD>
+<TD rowspan=3>50 Health</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.HEALTH_50##</TD>			<TD rowspan=3>Regeneration</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.REGEN##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.LIGHTNING##</TD>						<TD>##PLAYER_PERGAME_ITEM.LIGHTNING_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.HEALTH_50##</TD>														<TD>##PLAYER_PERGAME_ITEM.REGEN##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.LIGHTNING##</TD>						<TD>##PLAYER_PERHOUR_ITEM.LIGHTNING_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.HEALTH_50##</TD>														<TD>##PLAYER_PERHOUR_ITEM.REGEN##</TD></TR>
+
+<TR><TD rowspan=3>Railgun</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.RAILGUN##</TD>			<TD rowspan=3>Slugs</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.RAILGUN_A##</TD>
+<TD rowspan=3>Mega Health</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.HEALTH_MEGA##</TD>		<TD rowspan=3>Quad</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.QUAD##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.RAILGUN##</TD>						<TD>##PLAYER_PERGAME_ITEM.RAILGUN_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.HEALTH_MEGA##</TD>													<TD>##PLAYER_PERGAME_ITEM.QUAD##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.RAILGUN##</TD>						<TD>##PLAYER_PERHOUR_ITEM.RAILGUN_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.HEALTH_MEGA##</TD>													<TD>##PLAYER_PERHOUR_ITEM.QUAD##</TD></TR>
+
+<TR><TD rowspan=3>Plasma Gun</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.PLASMA##</TD>			<TD rowspan=3>Cells</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.PLASMA_A##</TD>
+<TD rowspan=3>Red Flag</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.FLAG_RED##</TD>				<TD rowspan=3>Medkit</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.MEDKIT##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.PLASMA##</TD>						<TD>##PLAYER_PERGAME_ITEM.PLASMA_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.FLAG_RED##</TD>														<TD>##PLAYER_PERGAME_ITEM.MEDKIT##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.PLASMA##</TD>						<TD>##PLAYER_PERHOUR_ITEM.PLASMA_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.FLAG_RED##</TD>														<TD>##PLAYER_PERHOUR_ITEM.MEDKIT##</TD></TR>
+
+
+<TR><TD rowspan=3>BFG</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.BFG##</TD>					<TD rowspan=3>BFG Ammo</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.BFG_A##</TD>
+<TD rowspan=3>Blue Flag</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.FLAG_BLUE##</TD>			<TD rowspan=3>Teleporter</TD><TD bgcolor="##USER_color_total##">##PLAYER_ITEM.TELE##</TD></TR>
+	<TR bgcolor="##USER_color_pergame##"><TD>##PLAYER_PERGAME_ITEM.BFG##</TD>							<TD>##PLAYER_PERGAME_ITEM.BFG_A##</TD>
+		<TD>##PLAYER_PERGAME_ITEM.FLAG_BLUE##</TD>														<TD>##PLAYER_PERGAME_ITEM.TELE##</TD></TR>
+	<TR bgcolor="##USER_color_perhour##"><TD>##PLAYER_PERHOUR_ITEM.BFG##</TD>							<TD>##PLAYER_PERHOUR_ITEM.BFG_A##</TD>
+		<TD>##PLAYER_PERHOUR_ITEM.FLAG_BLUE##</TD>														<TD>##PLAYER_PERHOUR_ITEM.TELE##</TD></TR>
+
+</TABLE>
+</TD></TR>
+
+</TABLE>
+<P>
+@@ENDLOOP@@
+
+<P>
+</CENTER>
+<P><HR><P>##CREDIT##
+</body></html>

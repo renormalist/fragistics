@@ -1,0 +1,22 @@
+<html><head>
+<title>Games Played</title>
+</head><body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<CENTER>
+<h2>Games Played</h2>
+Last Updated: ##NOW##<BR>
+<a href="stats.html">Overall Stats</a> <a href="playerlist.html">Player List</a> <a href="maplist.html">Map List</a>
+
+<P><HR><P>
+Games that were at least 
+**IF( SETTINGS_GAMEMINTIME.MINUTES > "0" )** ##SETTINGS_GAMEMINTIME.MINUTES## **IF( SETTINGS_GAMEMINTIME.MINUTES > "1" )** Minutes **ELSE** Minute **ENDIF** and **ENDIF** 
+##SETTINGS_GAMEMINTIME.SECONDS## Seconds,
+had ##SETTINGS_GAMEMINPLAYERS## Players and ##SETTINGS_GAMEMINKILLS## 
+Kills**IF( SETTINGS_GAMECOMPLETE == "FALSE" )**. **ELSE** and hit a limit. **ENDIF** 
+<P>
+<TABLE border=1>
+<TR><TD>Game</TD><TD>Map</TD><TD>Type</TD><TD width=300>Players</TD><TD>Kills</TD><TD>Time</TD><TD>Winner</TD></TR>
+##STATS_GAMELISTLOOP##
+</table>
+<P><HR><P>
+##CREDIT##
+</body></html>
