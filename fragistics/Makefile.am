@@ -1,0 +1,1 @@
+SUBDIRS = src perl templates conf tools images logs
