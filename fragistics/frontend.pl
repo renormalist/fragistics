@@ -34,14 +34,16 @@ my $MAXLEN   = 1024;
 my $CFGNAME  = "$MYNAME.conf";
 
 # global cmdline options
-my $CFGFILE         = undef;
-my $LOGFILE         = undef;
-my $DESTDIR         = undef;
-my $VERBOSE         = 1;
-my $HELP            = 0;
-my $MAN             = 0;
-my $FORCE           = 0;
-my $FRAGISTICS_HOME = undef;
+my $CFGFILE          = undef;
+my $LOGFILE          = undef;
+my $DESTDIR          = undef;
+my $VERBOSE          = 1;
+my $HELP             = 0;
+my $MAN              = 0;
+my $FORCE            = 0;
+my $SPOOL            = 0;
+my $FRAGISTICS_HOME  = undef;
+my $FRAGISTICS_SPOOL = undef;
 my $TPLTPATH         = undef;
 
 # string get_cfg_value (section, key);
@@ -132,6 +134,7 @@ sub read_cmdline_args {
 	      'homedir=s'  => \$param_homedir,
 	      'tpltpath=s' => \$param_tpltpath,
 	      'force!'     => \$FORCE,
+	      'spool'      => \$SPOOL,
 	      'help'       => \$HELP,
 	      'man'        => \$MAN)
     or pod2usage(2);
@@ -143,7 +146,11 @@ sub read_cmdline_args {
   push (@alternatives, "$ENV{'HOME'}/.$MYNAME") if $ENV{'HOME'};
   push (@alternatives, "./.$MYNAME");
   $FRAGISTICS_HOME = $alternatives[0];
-  printf "Homedir $FRAGISTICS_HOME\n" if $VERBOSE;
+  #printf "Homedir $FRAGISTICS_HOME\n" if $VERBOSE;
+
+  # input spool
+  $FRAGISTICS_SPOOL = $FRAGISTICS_HOME.'/spool';
+  $DESTDIR = undef if $SPOOL; # no single destdir in spool mode
 
   # source path
   @alternatives = ();
@@ -152,7 +159,7 @@ sub read_cmdline_args {
   push (@alternatives, "/etc/$MYNAME/$TPLTNAME") if -d "/etc/$MYNAME/$TPLTNAME";
   $TPLTPATH = $alternatives[0]
     or die "Can't find $TPLTNAME directory in $FRAGISTICS_HOME /etc/$MYNAME\n";
-  printf "Template path $TPLTPATH\n" if $VERBOSE;
+  #printf "Template path $TPLTPATH\n" if $VERBOSE;
 
   # cfg file
   @alternatives = ();
@@ -164,7 +171,7 @@ sub read_cmdline_args {
   push (@alternatives, "./$CFGNAME") if -R "./$CFGNAME";
   $CFGFILE = $alternatives[0]
     or die "Can't find config file $CFGNAME in $FRAGISTICS_HOME $ENV{'HOME'} /etc/$MYNAME /etc .\n";
-  printf "Config file $CFGFILE\n" if $VERBOSE;
+  #printf "Config file $CFGFILE\n" if $VERBOSE;
 
   # logfile
   @alternatives = ();
@@ -173,17 +180,100 @@ sub read_cmdline_args {
   push (@alternatives, $cfglogfile) if $cfglogfile;
   push (@alternatives, "games.log");
   $LOGFILE = $alternatives[0];
-  print "Log file $LOGFILE\n" if $VERBOSE;
+  #print "Log file $LOGFILE\n" if $VERBOSE;
 
+}
+
+# create nonexisting directories
+sub create_dirs {
   # homedir
   unless (-e $FRAGISTICS_HOME) {
     printf "Create homedir $FRAGISTICS_HOME\n" if $VERBOSE;
     system ('mkdir', $FRAGISTICS_HOME) # returns 0 if ok
       and die "Can't create homedir $FRAGISTICS_HOME\n";
   }
-
+  # input spool
+  unless (-e $FRAGISTICS_SPOOL) {
+    printf "Create gameslog spool dir $FRAGISTICS_SPOOL\n" if $VERBOSE;
+    system ('mkdir', $FRAGISTICS_SPOOL) # returns 0 if ok
+      and die "Can't create homedir $FRAGISTICS_SPOOL\n";
+  }
 }
 
+# process a single gameslogfile
+sub process_log {
+  my $logfile = shift;
+  my $okfile;
+  my $convertedlog;
+  my $destdir;
+  my $timeformat;
+
+  print "Gameslog file $LOGFILE\n" if $VERBOSE;
+
+  # time format
+  $timeformat = get_timeformat ($logfile);
+  if ($timeformat eq ':') {
+    print "Time format 'min:sec' ... good\n" if $VERBOSE;
+  }
+
+  # convert time format if necessary
+  if ($timeformat eq '.') {
+    print "Time format 'sec.tenthsec' ... convert to format 'min:sec'\n" if $VERBOSE;
+    $convertedlog = basename ($logfile);
+    chomp $convertedlog;
+    $convertedlog =~ s/\.[^.]*$//;
+    $convertedlog .= '.convertedlog';
+    $convertedlog = "$FRAGISTICS_HOME/$convertedlog";
+    if (-e $convertedlog and !$FORCE) {
+      print "Converted log $convertedlog already exists,\n" if $VERBOSE;
+      print "  so we use it. Use --force to recreate.\n" if $VERBOSE;
+    } else {
+      print "Converting $logfile -> $convertedlog ...\n" if $VERBOSE;
+      convert_timeformat ($logfile, $convertedlog);
+    }
+    $okfile = $convertedlog;
+  } else {
+    $okfile = $logfile;
+  }
+
+  # dest dir
+  $destdir = $DESTDIR; # default
+  unless ($destdir) {
+    $destdir = basename ($logfile);
+    $destdir =~ s/\.[^.]*$//;
+    $destdir = "$FRAGISTICS_HOME/stats/".$destdir;
+  }
+  if (-e $destdir and not $FORCE) {
+    die "Destination dir $destdir already exists,\n  use --force to overwrite.\n";
+  } else {
+    print "Create $destdir\n" if $VERBOSE;
+    system ('mkdir', '-p', $destdir)  # returns 0 if ok
+      and die "Can't create $destdir\n";
+  }
+
+  # call parameterized fragistics
+  print "Execute $MYNAME $okfile -> $destdir ...\n" if $VERBOSE;
+  system ('fragistics',
+	  '\LOGS/number_of_logs', 1,
+	  '\LOGS/logpath0', $okfile,
+	  '\MAIN/dest_path', $destdir,
+	  '\MAIN/cfgfile', $CFGFILE,
+	  '\MAIN/src_path', $TPLTPATH
+	 )
+    and die "$@";
+}
+
+sub spool {
+  opendir (DIR, $FRAGISTICS_SPOOL) or die "Can't opendir $FRAGISTICS_SPOOL: $!";
+  my @gameslogspool = grep { /^[^.]/ } readdir (DIR);
+  closedir(DIR);
+
+  foreach my $gameslog (@gameslogspool) {
+    print "Process $gameslog ...\n" if $VERBOSE;
+    print "  process_log ($FRAGISTICS_SPOOL".'/'."$gameslog);\n";
+    #process_log ($FRAGISTICS_SPOOL.'/'.$gameslog);
+  }
+}
 
 # void main();
 #
@@ -197,68 +287,26 @@ sub read_cmdline_args {
 # to a logfile 'LOGFILEBASENAME.ext').
 #
 sub main {
-  my $okfile;
-  my $logfile;
-  my $convertedlog;
-  my $destdir;
-  my $timeformat;
-
   # cmd line args and usage
   read_cmdline_args();
   pod2usage(1) if $HELP;
   pod2usage(-exitstatus => 0, -verbose => 2) if $MAN;
 
-  # time format
-  $timeformat = get_timeformat ($LOGFILE);
-  if ($timeformat eq ':') {
-    print "Time format 'min:sec' ... good\n" if $VERBOSE;
+  if ($VERBOSE) {
+    print "Fragistics frontend v0.0.1, (c) 2002 Steffen Schwigon\n";
+    print "Config file $CFGFILE\n";
+    print "Homedir $FRAGISTICS_HOME\n";
+    print "Template path $TPLTPATH\n";
   }
 
-  # convert time format if necessary
-  if ($timeformat eq '.') {
-    print "Time format 'sec.tenthsec' ... convert to format 'min:sec'\n" if $VERBOSE;
-    $convertedlog = basename ($LOGFILE);
-    chomp $convertedlog;
-    $convertedlog =~ s/\.[^.]*$//;
-    $convertedlog .= '.convertedlog';
-    $convertedlog = "$FRAGISTICS_HOME/$convertedlog";
-    if (-e $convertedlog and !$FORCE) {
-      print "Converted log $convertedlog already exists,\n" if $VERBOSE;
-      print "  so we use it. Use --force to recreate.\n" if $VERBOSE;
-    } else {
-      print "Converting $LOGFILE -> $convertedlog ...\n" if $VERBOSE;
-      convert_timeformat ($LOGFILE, $convertedlog);
-    }
-    $okfile = $convertedlog;
+  create_dirs;
+
+  if ($SPOOL) { # spool mode
+    print "Spool mode - process all files in $FRAGISTICS_SPOOL.\n" if $VERBOSE;
+    spool;
   } else {
-    $okfile = $LOGFILE;
+    process_log ($LOGFILE);
   }
-
-  # dest dir
-  $destdir = $DESTDIR;
-  unless ($destdir) {
-    $destdir = $LOGFILE;
-    $destdir =~ s/\.[^.]*$//;
-    $destdir = "$FRAGISTICS_HOME/stats_".$destdir;
-  }
-  if (-e $destdir and not $FORCE) {
-    die "Destination dir $destdir already exists,\n  use --force to overwrite.\n";
-  } else {
-    print "Create $destdir\n" if $VERBOSE;
-    system ('mkdir', '-p', $destdir)  # returns 0 if ok
-      and die "Can't create $destdir\n";
-  }
-
-  # call parameterized fragistics
-  print "Execute $MYNAME $okfile -> $destdir) ...\n" if $VERBOSE;
-  system ('fragistics',
-	  '\LOGS/number_of_logs', 1,
-	  '\LOGS/logpath0', $okfile,
-	  '\MAIN/dest_path', $destdir,
-	  '\MAIN/cfgfile', $CFGFILE,
-	  '\MAIN/src_path', $TPLTPATH
-	 )
-    and die "$@";
 }
 
 main;
@@ -283,13 +331,17 @@ frontend [options]
                   (default: $FRAGISTICS_HOME or $HOME/.fragistics)
 
   --cfgfile   ... Which configfile to use
-                  (default: "fragistics.conf" in $HOME/.fragistics:/etc/fragistics)
+                  (default: "fragistics.conf" in $HOME/.fragistics or /etc/fragistics)
 
-  --logfile   ... Which logfile to parse
-                  (default: read from config file)
+  --logfile   ... Which logfile to parse; ignored in spool mode
+                  (default: get logfilename from config file)
 
-  --destdir   ... Which directory to write
-                  (default: "<homedir>/stats_<logfilebasename>")
+  --destdir   ... Which directory to write; ignored in spool mode
+                  (default: "<homedir>/stats/<logfilebasename>")
+
+  --spool     ... Spool mode;
+                  process all files in  <homedir>/spool/
+                  write output stats to <homedir>/stats/<logfilebasename>/
 
 
 =head1 DESCRIPTION
