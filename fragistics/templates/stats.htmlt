@@ -12,7 +12,7 @@ Last Updated: ##NOW##<BR>
 ##STATS_TOTTIME.DAYS##&nbsp;D, ##STATS_TOTTIME.HOURS##&nbsp;H, ##STATS_TOTTIME.MINUTES##&nbsp;M, ##STATS_TOTTIME.SECONDS##&nbsp;S
 
 <P><HR><P>
-<a href="maplist.html">Map List</a> <a href="gamelist.html">Game List</a> <a href="playerlist.html">Player List</a><P>
+<a href="maplist.html">Map List</a> <a href="gamelist.html"><b>Game List</b></a> <a href="playerlist.html">Player List</a><P>
 <A href="allkilltable.html">Overall Killer/Killee Table</a>
 <P><HR><P>
 

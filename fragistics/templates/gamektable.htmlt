@@ -1,5 +1,5 @@
 $$gameheader$$
-<a href="game_##STATS_GAMENUMBER##.html">Game Scores</A> <a href="gameplayer_##STATS_GAMENUMBER##.html">Player Stats</A><BR>
+Other stats of this game: <a href="game_##STATS_GAMENUMBER##.html"><b>Game Scores<b></A> <a href="gameplayer_##STATS_GAMENUMBER##.html">Player Stats</A><BR>
 <P>
 
 All Kills<BR>

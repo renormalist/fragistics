@@ -1,15 +1,15 @@
 $$gameheader$$
-<a href="gamektable_##STATS_GAMENUMBER##.html">Kill Tables</A> <a href="gameplayer_##STATS_GAMENUMBER##.html">Player Stats</A><BR>
+Other stats of this game: <a href="gamektable_##STATS_GAMENUMBER##.html">Kill Tables</A> <a href="gameplayer_##STATS_GAMENUMBER##.html"><b>Player Stats</b></A><BR>
 <P>
 
 <table><tr><td>
-##GAME_GAMETYPE## Game<BR>
-Time ##GAME_TIME.STR##<BR>
-##GAME_PLAYERCOUNT## players<BR>
-##GAME_TOTKILLS## kills<BR>
-##GAME_TOTITEMS## items<BR>
-##GAME_TOTMSGS## messages<BR>
-##GAME_TOTTEAMMSGS## team messages<P>
+<b>##GAME_GAMETYPE## Game</b><BR>
+Time ##GAME_TIME.STR##,
+##GAME_PLAYERCOUNT## players,
+##GAME_TOTKILLS## kills,
+##GAME_TOTITEMS## items,
+##GAME_TOTMSGS## messages,
+##GAME_TOTTEAMMSGS## team messages<BR>
 **IF( GAME_GAMETYPE == "CTF" )** 
 <font color=red>RED: ##GAME_TEAMSCORE.RED##</Font>
 <font color=blue>BLUE: ##GAME_TEAMSCORE.BLUE##</Font>
@@ -19,16 +19,17 @@ Time ##GAME_TIME.STR##<BR>
 <font color=blue>BLUE: ##GAME_TEAMSCORE.BLUE##</Font>
  **ENDIF** 
 
-<P>
-Time Limit: ##GAME_LIMIT.TIME##<BR>
+Time Limit: ##GAME_LIMIT.TIME##,
 **IF( GAME_GAMETYPE != "CTF" )** 
-Frag Limit: ##GAME_LIMIT.FRAG##
+Frag Limit: ##GAME_LIMIT.FRAG##,
  **ELSE** 
-Capture Limit: ##GAME_LIMIT.CAPTURE##
- **ENDIF** <BR>
+Capture Limit: ##GAME_LIMIT.CAPTURE##,
+ **ENDIF** 
 **IF( GAME_GAMEOVERREASON != "UNKNOWN" )** ##GAME_GAMEOVERREASON## Hit **ENDIF** 
 </td><td>
+</tr>
 
+<tr><td>
 Scores:<BR>
 
 **IF( GAME_GAMETYPE == "FFA" )** 
