@@ -318,23 +318,30 @@ sub process_log {
     $destdir = "$FRAGISTICS_HOME/stats/".$destdir;
   }
   if (-e $destdir and not $FORCE) {
-    die "Destination dir $destdir already exists,\n  use --force to overwrite.\n";
+    print STDERR "Destination dir $destdir already exists,\n  use --force to overwrite.\n";
+    return 0;
   } else {
     print "Create $destdir\n" if $VERBOSE;
-    system ('mkdir', '-p', $destdir)  # returns 0 if ok
-      and die "Can't create $destdir\n";
+    if (!system ('mkdir', '-p', $destdir)) {  # returns 0 if ok
+      print STDERR "Can't create $destdir\n";
+      return 0;
+    }
   }
 
   # call parameterized fragistics
   print "Execute $RAWFRAGISTICS (the $MYNAME backend) ...\n* $okfile -> $destdir\n" if $VERBOSE;
-  system ($RAWFRAGISTICS,
-	  '\LOGS/number_of_logs', 1,
-	  '\LOGS/logpath0', $okfile,
-	  '\MAIN/dest_path', $destdir,
-	  '\MAIN/cfgfile', $CFGFILE,
-	  '\MAIN/src_path', $TPLTPATH
-	 )
-    and die "$@";
+  if (!system ($RAWFRAGISTICS,
+	       '\LOGS/number_of_logs', 1,
+	       '\LOGS/logpath0', $okfile,
+	       '\MAIN/dest_path', $destdir,
+	       '\MAIN/cfgfile', $CFGFILE,
+	       '\MAIN/src_path', $TPLTPATH
+	      )) {
+    print STDERR "$@";
+    return 0;
+  }
+
+  return 1;
 }
 
 sub spool {
