@@ -20,6 +20,9 @@ RM = /bin/rm -f
 full:
 	g++ -g -o $(TARGET) $(SOURCES)
 
+static:
+	g++ -static -o $(TARGET).static $(SOURCES)
+
 all: all1
 
 all1: $(TARGET)

@@ -1,0 +1,60 @@
+
+INSTALL:
+--------
+Untar it as root in the root directory /
+
+su -
+cd /
+tar xpzf fragistics.tgz
+
+It will create a directory
+
+  /etc/fragistics
+
+and 2 files
+
+  /usr/local/bin/fragistics
+  /usr/local/bin/rawfragistics
+
+
+HELP:
+-----
+
+  fragistics --help
+
+
+SIMPLE USE:
+-----------
+Login as normal user. Try
+
+  fragistics --logfile foo.log
+
+This will create the stats in
+
+  ~/.fragistics/stats/foo/
+
+
+BETTER USE:
+-----------
+If you have more than one file then I recommend the spool mode.
+Simply put all your logfiles (e.g., foo.log, bar.log) into
+
+  ~/.fragistics/spool/
+
+and call
+
+  fragistics --spool
+
+This will create the stats
+
+  ~/.fragistics/stats/foo/
+  ~/.fragistics/stats/bar/
+
+
+PROBLEMS:
+---------
+If fragistics crashes, it is highly because of artefacts in the
+gameslogfile left over by quake3. It would be nice, if you could
+provide the gameslogfile to me, because I'm currently writing a
+artefact corrector for typical problems on server side (e.g. server
+restarts create unfinished incorrect log lines).
