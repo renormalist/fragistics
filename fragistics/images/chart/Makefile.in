@@ -69,6 +69,8 @@ VERSION = @VERSION@
 
 Chartdir = $(pkglibdir)/images/chart
 Chart_DATA = *.gif
+
+EXTRA_DIST = *.gif
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 DATA =  $(Chart_DATA)

@@ -12,14 +12,22 @@ FRAGISTICSRM = /bin/rm -f
 
 bin_SCRIPTS = $(FRAGISTICSTARGET)
 
-all-local: all1
+EXTRA_DIST = rawfragistics rawfragistics_static *.cpp *.h *.txt
+
+all-local: all1 static
 
 all1: $(FRAGISTICSTARGET)
+
+static: $(FRAGISTICSTARGET)_static
 
 $(FRAGISTICSTARGET): $(FRAGISTICSSOURCES)
 	$(CXX) -o $@ $(FRAGISTICSSOURCES)
 
+$(FRAGISTICSTARGET)_static: $(FRAGISTICSSOURCES)
+	$(CXX) -static -o $@ $(FRAGISTICSSOURCES)
+
 clean-local:
 	$(FRAGISTICSRM) $(FRAGISTICSOFILES)
 	$(FRAGISTICSRM) $(FRAGISTICSTARGET)
+	$(FRAGISTICSRM) $(FRAGISTICSTARGET)_static
 

@@ -68,6 +68,7 @@ PKGLIBDIR = @PKGLIBDIR@
 VERSION = @VERSION@
 
 SUBDIRS = src perl templates conf tools images logs
+EXTRA_DIST = gpl.txt manifest.txt artistic.txt version.txt
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 

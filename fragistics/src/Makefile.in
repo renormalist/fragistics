@@ -78,6 +78,8 @@ FRAGISTICSTARGET = rawfragistics
 FRAGISTICSRM = /bin/rm -f
 
 bin_SCRIPTS = $(FRAGISTICSTARGET)
+
+EXTRA_DIST = rawfragistics rawfragistics_static *.cpp *.h *.txt
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 SCRIPTS =  $(bin_SCRIPTS)
@@ -203,16 +205,22 @@ installdirs mostlyclean-generic distclean-generic clean-generic \
 maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
-all-local: all1
+all-local: all1 static
 
 all1: $(FRAGISTICSTARGET)
+
+static: $(FRAGISTICSTARGET)_static
 
 $(FRAGISTICSTARGET): $(FRAGISTICSSOURCES)
 	$(CXX) -o $@ $(FRAGISTICSSOURCES)
 
+$(FRAGISTICSTARGET)_static: $(FRAGISTICSSOURCES)
+	$(CXX) -static -o $@ $(FRAGISTICSSOURCES)
+
 clean-local:
 	$(FRAGISTICSRM) $(FRAGISTICSOFILES)
 	$(FRAGISTICSRM) $(FRAGISTICSTARGET)
+	$(FRAGISTICSRM) $(FRAGISTICSTARGET)_static
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

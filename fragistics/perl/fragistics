@@ -271,6 +271,7 @@ sub copy_global_customization_files_to_user {
     print "Copy config file from $cfg_src to $FRAGISTICS_HOME/.\n";
     cp ("-f", "$cfg_src", "$FRAGISTICS_HOME/");
   }
+
 }
 
 # process a single gameslogfile

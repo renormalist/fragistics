@@ -69,6 +69,8 @@ VERSION = @VERSION@
 
 Levelshotsdir = $(pkglibdir)/images/levelshots
 Levelshots_DATA = *.jpg
+
+EXTRA_DIST = *.jpg
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 DATA =  $(Levelshots_DATA)

@@ -69,6 +69,8 @@ VERSION = @VERSION@
 
 Modelsdir = $(pkglibdir)/images/models
 Models_DATA = *.jpg
+
+EXTRA_DIST = *.jpg
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 DATA =  $(Models_DATA)

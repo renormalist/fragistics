@@ -69,6 +69,8 @@ VERSION = @VERSION@
 
 Logsdir = $(pkglibdir)
 Logs_DATA = examplegames.log
+
+EXTRA_DIST = examplegames.log
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 DATA =  $(Logs_DATA)

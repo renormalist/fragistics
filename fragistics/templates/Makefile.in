@@ -69,6 +69,8 @@ VERSION = @VERSION@
 
 Templatedir = $(pkglibdir)/templates
 Template_DATA = *.htmlt
+
+EXTRA_DIST = *.htmlt
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES = 
 DATA =  $(Template_DATA)
