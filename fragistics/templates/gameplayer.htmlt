@@ -1,4 +1,5 @@
 $$gameheader$$
+<h2>Game Player Stats</h2>
 Other stats of this game: <a href="game_##STATS_GAMENUMBER##.html"><b>Game Scores</b></A> <a href="gamektable_##STATS_GAMENUMBER##.html">Kill Tables</A>
 <P>
 

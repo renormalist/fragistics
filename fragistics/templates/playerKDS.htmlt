@@ -1,8 +1,8 @@
 <html><head>
-<title>Player Rank - Kills, Deaths, Suicides</TITLE>
+<title>Overall Player Rank - Kills, Deaths, Suicides</TITLE>
 </head>
 <body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
-<center><h1>Player Rank - Kills, Deaths, Suicides</H1>
+<center><h1>Overall Player Rank - Kills, Deaths, Suicides</H1>
 Last Updated: ##NOW##<BR>
 <P><HR><P>
 <a href="playerlist.html">Player list</a>&nbsp;-&nbsp;<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a> <p>

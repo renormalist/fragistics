@@ -1,4 +1,5 @@
 $$mapheader$$
+<h2>Map Kill Tables</h2>
 <a href="map_##MAP_MAPNAME##.html">Map Scores</A> <a href="mapplayer_##MAP_MAPNAME##.html">Map Players</A> <a href="maprank_##MAP_MAPNAME##.html">Player Rank</A><BR>
 <P>
 

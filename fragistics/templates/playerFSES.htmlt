@@ -1,8 +1,8 @@
 <html><head>
-<title>Player Rank - Frags, Score, Eff, Skill</TITLE>
+<title>Overall Player Rank - Frags, Score, Eff, Skill</TITLE>
 </head>
 <body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
-<center><h1>Player Rank - Frags, Score, Eff, Skill</H1>
+<center><h1>Overall Player Rank - Frags, Score, Eff, Skill</H1>
 Last Updated: ##NOW##<BR>
 <P><HR><P>
 <a href="playerlist.html">Player list</a>&nbsp;-&nbsp;<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a> <p>
