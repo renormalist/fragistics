@@ -83,7 +83,7 @@ bool GameslogParser::Parse(int startline){
 	
 	//printf ("DBG: %d: %s", linecount, line); // ss5
 	evt = ParseLine(line);
-	evt->print (); // ss5
+	//evt->print (); // ss5
 
 	switch(evt->event){
 	case EVENT_GAMESTART:{
@@ -98,7 +98,7 @@ bool GameslogParser::Parse(int startline){
 				      evt->losses,
 				      evt->team,
 				      stats);
-		printf("Game %d\n", stats->GetGames());
+		//printf("Game %d\n", stats->GetGames()); // ss5
 	    }else{
 	      //printf ("DBG: *** b\n");
 		if(currentgame->GetType() == GAMETYPE_1V1 && evt->how == GAMETYPE_1V1){
@@ -117,7 +117,7 @@ bool GameslogParser::Parse(int startline){
 					      evt->losses,
 					      evt->team,
 					      stats);
-			printf("Game %d\n", stats->GetGames());
+			//printf("Game %d\n", stats->GetGames()); // ss5
 		    }
 		}else{
 		  //printf ("DBG: *** c\n");
@@ -133,7 +133,7 @@ bool GameslogParser::Parse(int startline){
 					  evt->losses,
 					  evt->team,
 					  stats);
-		    printf("Game %d\n", stats->GetGames());
+		    //printf("Game %d\n", stats->GetGames()); // ss5
 		}
 	    }
 	    break;

@@ -305,6 +305,7 @@ bool Settings::FindSetting(string *value, const char* section,const char* name, 
 	int i;
 	for(i=0;i<argc;i++){
 		if(!strcmp(argv[i],temp.c_str())){
+		    printf ("-> matched argv[%d] = %s == %s \n", i, //argv[i], temp.c_str()); // ss5
 			//found match - if next param doesn't start with \, return it  else return blank
 			if(i+1 < argc && argv[i+1][0]!=initChar){
 				(*value)=argv[i+1];

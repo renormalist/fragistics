@@ -326,7 +326,7 @@ void Game::HandleEvent(GameEvent *evt){
 						p->AddMsg();
 					}else{
 					  // TODO: players in msg: are stripped
-					  printf("Bad Player in msg: %s\n", name); // ss5
+					    //printf("Bad Player in msg: %s\n", name); // ss5
 					}
 				}else{
 					printf("Name too long in msg\n");
@@ -346,7 +346,7 @@ void Game::HandleEvent(GameEvent *evt){
 					if(p!=NULL){
 						p->AddMsgTeam();
 					}else{
-					  printf("Bad Player in msg: %s\n", name); // ss5
+					    //printf("Bad Player in msg: %s\n", name); // ss5
 					}
 				}else{
 					printf("Name too long in msg\n");
@@ -867,9 +867,9 @@ void Map::AddGame(Game *game){
 	for(i=0;i<ITEM_LAST;i++)
 		all_items[i]+=game->GetItem(i);
 
-	printf ("DBG: game->GetType() = %d\n", game->GetType()); // ss5
+	//printf ("DBG: game->GetType() = %d\n", game->GetType()); // ss5
 	gametype[game->GetType()]++;
-	printf ("DBG: gametype[game->GetType()] = %d\n", gametype[game->GetType()]); // ss5
+	//printf ("DBG: gametype[game->GetType()] = %d\n", gametype[game->GetType()]); // ss5
 	
 	gameoverreason[game->GetGameOverReason()];
 	modified=true;
