@@ -43,6 +43,7 @@ my $RAWFRAGISTICS = 'rawfragistics';
 my $CFGFILE              = undef;
 my $LOGFILE              = undef;
 my $DESTDIR              = undef;
+my $DESTBASE         = undef;
 my $VERBOSE              = 1;
 my $HELP                 = 0;
 my $MAN                  = 0;
@@ -132,25 +133,29 @@ sub read_cmdline_args {
 
   # -- defaults --
   my @alternatives;
-  my $param_cfgfile    = undef;
-  my $param_homedir    = undef;
-  my $param_logfile    = undef;
-  my $param_tpltpath   = undef;
-  my $param_imagespath = undef;
+  my $param_cfgfile      = undef;
+  my $param_homedir      = undef;
+  my $param_logfile      = undef;
+  my $param_tpltpath     = undef;
+  my $param_imagespath   = undef;
+  my $param_spooldir     = undef;
+  my $param_destbase     = undef;
 
   # cmdline options
-  GetOptions ('verbose!'     => \$VERBOSE,
-              'cfgfile=s'    => \$param_cfgfile,
-              'logfile=s'    => \$param_logfile,
-              'destdir=s'    => \$DESTDIR,
-              'homedir=s'    => \$param_homedir,
-              'tpltpath=s'   => \$param_tpltpath,
-              'imagespath=s' => \$param_imagespath,
-              'force!'       => \$FORCE,
-              'spool'        => \$SPOOL,
-              'init'         => \$INIT,
-              'help'         => \$HELP,
-              'man'          => \$MAN)
+  GetOptions ('verbose!'       => \$VERBOSE,
+              'cfgfile=s'      => \$param_cfgfile,
+              'logfile=s'      => \$param_logfile,
+              'destdir=s'      => \$DESTDIR,
+              'destbase=s'     => \$param_destbase,
+              'spooldir=s'     => \$param_spooldir,
+              'homedir=s'      => \$param_homedir,
+              'tpltpath=s'     => \$param_tpltpath,
+              'imagespath=s'   => \$param_imagespath,
+              'force!'         => \$FORCE,
+              'spool'          => \$SPOOL,
+              'init'           => \$INIT,
+              'help'           => \$HELP,
+              'man'            => \$MAN)
     or pod2usage(2);
 
   # homedir
@@ -162,11 +167,25 @@ sub read_cmdline_args {
   $FRAGISTICS_HOME = $alternatives[0];
   #printf "Homedir $FRAGISTICS_HOME\n" if $VERBOSE;
 
-  # subdirs
-  $FRAGISTICS_SPOOL     = $FRAGISTICS_HOME.'/spool';
+  # spooldir
+  @alternatives = ();
+  push (@alternatives, $param_spooldir) if $param_spooldir;
+  push (@alternatives, $FRAGISTICS_HOME.'/spool');
+  $FRAGISTICS_SPOOL = $alternatives[0];
+
+  # destbase
+  @alternatives = ();
+  push (@alternatives, $param_destbase) if $param_destbase;
+  push (@alternatives, $FRAGISTICS_HOME.'/stats');
+  $DESTBASE = $alternatives[0];
+  #printf "Dest path $param_destbase\n" if $VERBOSE;
+
+  # destdir
+  $DESTDIR = undef if $SPOOL; # no single destdir in spool mode
+
+  # misc subdirs
   $FRAGISTICS_IMAGES    = $FRAGISTICS_HOME.'/'.$IMAGESNAME;
   $FRAGISTICS_TEMPLATES = $FRAGISTICS_HOME.'/'.$TPLTNAME;
-  $DESTDIR = undef if $SPOOL; # no single destdir in spool mode
 
   # template path
   @alternatives = ();
@@ -282,7 +301,7 @@ sub process_log {
   my $destdir;
   my $timeformat;
 
-  print "Gameslog file $LOGFILE\n" if $VERBOSE;
+  print "Process $logfile ...\n" if $VERBOSE;
 
   # time format
   $timeformat = get_timeformat ($logfile);
@@ -315,10 +334,11 @@ sub process_log {
   unless ($destdir) {
     $destdir = basename ($logfile);
     $destdir =~ s/\.[^.]*$//;
-    $destdir = "$FRAGISTICS_HOME/stats/".$destdir;
+    $destdir = "$DESTBASE/".$destdir;
   }
+
   if (-e $destdir and not $FORCE) {
-    print STDERR "Destination dir $destdir already exists,\n  use --force to overwrite.\n";
+    print STDERR "Destination dir $destdir already exists,\n  use --force to overwrite.\n" if $VERBOSE;
     return 0;
   } else {
     print "Create $destdir\n" if $VERBOSE;
@@ -350,7 +370,6 @@ sub spool {
   closedir(DIR);
 
   foreach my $gameslog (@gameslogspool) {
-    print "Process $gameslog ...\n" if $VERBOSE;
     process_log ($FRAGISTICS_SPOOL.'/'.$gameslog);
   }
 }
@@ -384,6 +403,7 @@ sub main {
     print "Config file $CFGFILE\n";
     print "Homedir $FRAGISTICS_HOME\n";
     print "Template path $TPLTPATH\n";
+    print "Destbase $DESTBASE\n";
   }
 
   if ($INIT) { # init user specific fragistics environment
@@ -414,32 +434,38 @@ frontend - Frontend to fragistics.
 frontend [options]
 
  Options:
-  --help      ... print this help text.
+  --help         ... print this help text.
 
   --verbose
-  --noverbose ... [Do not] describe what is going on.
+  --noverbose    ... [Do not] describe what is going on.
 
-  --homedir   ... Homedir, used as default for input/output files
-                  (default: $FRAGISTICS_HOME or $HOME/.fragistics)
+  --homedir      ... Homedir, used as default for input/output files
+                     (default: $FRAGISTICS_HOME or $HOME/.fragistics)
 
-  --cfgfile   ... Which configfile to use
-                  (default: "fragistics.conf" in $HOME/.fragistics or /etc/fragistics)
+  --cfgfile      ... Which configfile to use
+                     (default: "fragistics.conf" in $HOME/.fragistics or /etc/fragistics)
 
-  --logfile   ... Which logfile to parse; ignored in spool mode
-                  (default: get logfilename from config file)
+  --logfile      ... Which logfile to parse; ignored in spool mode
+                     (default: get logfilename from config file)
 
-  --destdir   ... Which directory to write; ignored in spool mode
-                  (default: "<homedir>/stats/<logfilebasename>")
+  --destbase     ... Which base directory to write in spool mode
+                     (default: "<homedir>/stats/")
 
-  --spool     ... Spool mode;
-                  process all files in  <homedir>/spool/
-                  write output stats to <homedir>/stats/<logfilebasename>/
+  --destdir      ... Which directory to write; ignored in spool mode
+                     (default: "<destbase>/<logfilebasename>")
 
-  --init      ... Initialize a users personal fragistics directory with
-                  all subdirectories, local configuration file, html
-                  templates and image directories by copying everything
-                  needed from the global directory into $FRAGISTICS_HOME
-                  or $HOME/.fragistics
+  --spooldir     ... Where to search for logfiles in spool mode
+                     (default: "<homedir>/spool/")
+
+  --spool        ... Spool mode;
+                     process all files in  <spoolpath>
+                     write output stats to <destbase>/<logfilebasename>/
+
+  --init         ... Initialize a users personal fragistics directory with
+                     all subdirectories, local configuration file, html
+                     templates and image directories by copying everything
+                     needed from the global directory into $FRAGISTICS_HOME
+                     or $HOME/.fragistics
 
 =head1 DESCRIPTION
 
