@@ -514,6 +514,7 @@ void PList::ReSortList(string *type, Stats *stats){
 		if(!eval){
 			maxval.erase();
 			stats->GetVariableValue(type,&maxval);
+			printf ("type = %s, maxval = %s\n", type->c_str(),maxval.c_str()); // ss5
 			if(!str){
 				if(maxval.length()>0){
 					maxchar=(char)maxval.at(0);

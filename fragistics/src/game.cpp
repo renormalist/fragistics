@@ -490,7 +490,8 @@ void Game::GetVariableValue(string *variable, string *value, Stats *stats){
 			switch(gametype){
 			case GAMETYPE_1V1:{
 									string sorttype;
-									sorttype="PLAYER_WINS.1V1";
+									//sorttype="PLAYER_WINS.1V1"; // ss5
+									sorttype="PLAYER_SCORE";
 									PList templist;
 									templist.DupeList(&players);
 									templist.ReSortList(&sorttype,stats);
