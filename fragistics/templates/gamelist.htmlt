@@ -13,10 +13,17 @@ Games that were at least
 had ##SETTINGS_GAMEMINPLAYERS## Players and ##SETTINGS_GAMEMINKILLS## 
 Kills**IF( SETTINGS_GAMECOMPLETE == "FALSE" )**. **ELSE** and hit a limit. **ENDIF** 
 <P>
-<TABLE border=1>
+
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+<TABLE border=0>
 <TR><TD>Game</TD><TD>Map</TD><TD>Type</TD><TD width=300>Players</TD><TD>Kills</TD><TD>Time</TD><TD>Winner</TD></TR>
 ##STATS_GAMELISTLOOP##
 </table>
+
+</table>
+
 <P><HR><P>
 ##CREDIT##
 </body></html>

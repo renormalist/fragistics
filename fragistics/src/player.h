@@ -395,15 +395,8 @@ public:
 		else
 			sprintf(buf,"%.2f",(((float)GetAggregateKills(kills, killtype)*100.0)/((float)GetAggregateKills(kills, killtype) + GetAggregateKills(deaths, killtype) + GetAggregateKills(suicides, killtype))) );
 	};
-	int GetEffInt(int killtype){
-		if(GetAggregateKills(kills, killtype)<=0)
-			return 0;
-		else
-			return ((float)GetAggregateKills(kills, killtype)*10000.0)/((float)GetAggregateKills(kills, killtype) + GetAggregateKills(deaths, killtype) + GetAggregateKills(suicides, killtype));
-	};
-	int GetWepSkillInt(int killtype){
-		return ((float)GetAggregateKills(kills, killtype)*100)/((float)(GetAggregateKills(deaths, killtype)+GetAggregateKills(suicides, killtype)+1));
-	};
+	int GetEffInt(int killtype);
+	int GetWepSkillInt(int killtype);
 	void GetWepSkill(int killtype,char *buf){
 		sprintf(buf,"%.2f",((float)GetAggregateKills(kills, killtype))/((float)(GetAggregateKills(deaths, killtype)+GetAggregateKills(suicides, killtype)+1)) );
 	};

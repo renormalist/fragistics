@@ -172,7 +172,7 @@ void Game::HandleEvent(GameEvent *evt){
 					if(p!=NULL){
 						p->AddMsg();
 					}else{
-						printf("Bad Player in msg\n");
+						printf("Bad Player in msg: %s\n", name); // ss5
 					}
 				}else{
 					printf("Name too long in msg\n");
@@ -192,7 +192,7 @@ void Game::HandleEvent(GameEvent *evt){
 					if(p!=NULL){
 						p->AddMsgTeam();
 					}else{
-						printf("Bad Player in msg\n");
+						printf("Bad Player in msg: %s\n", name); // ss5
 					}
 				}else{
 					printf("Name too long in msg\n");

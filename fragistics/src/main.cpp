@@ -470,18 +470,18 @@ there was no \r\n on the last line
 	cf=new ConfigFile("config.cfg");
 
 	string val;
-	cf->GetValue("","default",&val);
+	cf->Getalue("","default",&val);
 	printf(" default =\'%s\'\n",(char*)val.c_str());
 
-	cf->GetValue("settings","name",&val);
+	cf->Getalue("settings","name",&val);
 	printf(" settings/name =\'%s\'\n",(char*)val.c_str());
 
-	cf->GetValue("settings","value",&val);
+	cf->Getalue("settings","value",&val);
 	printf(" settings/value =\'%s\'\n",(char*)val.c_str());
 
 	cf->Write("config.new1.cfg");
 
-	cf->AddValue("new","test","success");
+	cf->Addalue("new","test","success");
 
 	cf->Write("config.new2.cfg");
 
@@ -636,5 +636,7 @@ there was no \r\n on the last line
 	return 0;
 }
 
-
+/* *** Emacs-Variables: *** */
+/* *** font-lock-mode: true *** */
+/* *** Emacs-Variables: End *** */
 

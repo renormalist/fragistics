@@ -1,9 +1,9 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Deeloper Studio generated include file.
 // Used by Script1.rc
 //
 
-// Next default values for new objects
+// Next default alues for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS

@@ -1,4 +1,7 @@
-<TABLE border=1>
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+<TABLE border=0>
 
 <TR><TD>Name</TD><TD>Model</TD><TD>Ping</TD>
 <TD>HC</TD>
@@ -9,12 +12,17 @@
 
 <!-- sort by score first then by frags-->
 @@LOOP( LOOP_GAME_PLAYERS.( PLAYER_SCORE * 1000 ) + PLAYER_FRAGS.ALL )@@
-<TR><TD>##PLAYER_NAME## </TD><TD>##PLAYER_MODEL##</TD><TD>##PLAYER_AVEPING##</TD>
+
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** >
+
+<TD>##PLAYER_NAME## </TD><TD>##PLAYER_MODEL##</TD><TD>##PLAYER_AVEPING##</TD>
 <TD>##PLAYER_AVEHC##**IF( PLAYER_AVEBOTSKILL >= "1" )** B:##PLAYER_AVEBOTSKILL## **ENDIF** </TD>
 <TD>##PLAYER_KILLS.TOTAL##</TD><TD>##PLAYER_DEATHS.TOTAL##</TD><TD>##PLAYER_SUICIDES.TOTAL##</TD><TD>##PLAYER_FRAGS.TOTAL##</TD><TD>##PLAYER_SCORE##</TD>
 <TD>##PLAYER_KILLDIFF.TOTAL##</TD><TD>##PLAYER_EFF.TOTAL##</TD><TD>##PLAYER_SKILL.TOTAL##</TD><TD>!!.2f,PLAYER_KILLS.ALL / PLAYER_DEATHS.ALL!!</TD>
 <TD>##PLAYER_RANK##</TD>
 </TR>
 @@ENDLOOP@@
+
+</table>
 
 </table>

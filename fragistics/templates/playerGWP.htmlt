@@ -5,15 +5,15 @@
 <center><h1>Player Rank - Games, Time, Wins, Placed</H1>
 Last Updated: ##NOW##<BR>
 <P><HR><P>
-<a href="playerlist.html">Player List</a> <a href="gamelist.html">Game List</a> <a href="maplist.html">Map List</a> <a href="stats.html">Overall stats</a><P>
+<a href="playerlist.html">Player list</a>&nbsp;-&nbsp;<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a> <p>
 $$playerlistheader$$
 <P><HR><P>
 
-<TABLE><TR><TD valign=top>
+<TABLE><TR bgcolor="#7080a0"><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Games</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Games</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_GAMES )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_GAMES##</TD></TR>
 @@ENDLOOP@@
@@ -21,9 +21,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Time</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Time</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_TOTTIME )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_TOTTIME.STR##</TD></TR>
 @@ENDLOOP@@
@@ -31,9 +31,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>FFA Wins</TD></TR>
+<TABLE border=0><TR><TD colspan=4>FFA Wins</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_WINS.FFA )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_WINS.FFA##</TD></TR>
 @@ENDLOOP@@
@@ -41,9 +41,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>FFA Win or Place</TD></TR>
+<TABLE border=0><TR><TD colspan=4>FFA Win or Place</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_FFAWINPLACE )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_FFAWINPLACE##</TD></TR>
 @@ENDLOOP@@

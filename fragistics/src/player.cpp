@@ -319,7 +319,24 @@ bool PList::DupeList(PList *list){
 
 }
 
+// ss5:
+int Player::GetEffInt(int killtype)
+{
+  if(GetAggregateKills(kills, killtype)<=0)
+    return 0;
+  else
+    return
+      (int)( 
+      ((float)GetAggregateKills(kills, killtype)*10000.0) / 
+      ((float)GetAggregateKills(kills, killtype) + GetAggregateKills(deaths, killtype) + GetAggregateKills(suicides, killtype)));
+}
 
+// ss5:
+int Player::GetWepSkillInt(int killtype)
+{
+  return (int) (
+    ((float)GetAggregateKills(kills, killtype)*100)/((float)(GetAggregateKills(deaths, killtype)+GetAggregateKills(suicides, killtype)+1)));
+}
 
 void Player::SetInfo(char* name_, char* model_, int team_, int hc_, int skill_,int w1v1, int l1v1, int timesec, Stats *st){
 		if(name)
@@ -392,11 +409,11 @@ void Player::GetFileName(string *buf){
 	strcpy(n,buf->c_str());
 	s=d=n;
 	while(*s!='\0'){
-		if(strchr(badchars,*s)==NULL && *s>' ' && *s<128){
-			*d=*s;
-			d++;	
-		}
-		s++;
+	  if ((strchr(badchars,*s)==NULL) && (*s>' ') && (*s<128)){ // ss5
+	    *d=*s;
+	    d++;	
+	  }
+	  s++;
 	}
 	*d='\0';
 	(*buf)="player_";

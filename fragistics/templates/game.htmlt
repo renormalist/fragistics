@@ -1,6 +1,7 @@
 $$gameheader$$
 <a href="gamektable_##STATS_GAMENUMBER##.html">Kill Tables</A> <a href="gameplayer_##STATS_GAMENUMBER##.html">Player Stats</A><BR>
 <P>
+
 <table><tr><td>
 ##GAME_GAMETYPE## Game<BR>
 Time ##GAME_TIME.STR##<BR>
@@ -45,8 +46,11 @@ $$game_score_ffa$$
 <P><HR><P>
 <H3>Kills by Type</H3><P>
 
-<TABLE border=1>
-<TR><TD align=right>
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+<TABLE border=0>
+<TR bgcolor=#6a7aa0><TD align=right>
 All Kills
 </TD><TD>
 ##GAME_ALLKILLS.TOTAL_KILLS##
@@ -66,7 +70,7 @@ Machinegun Kills
 ##GAME_ALLKILLS.MACHINEGUN_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct Grenade Kills
 </TD><TD>
 ##GAME_ALLKILLS.GRENADE_KILL_DIRECT##
@@ -86,7 +90,7 @@ Rocket Splash Kills
 ##GAME_ALLKILLS.ROCKET_KILL_SPLASH##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct Plasmagun Kills
 </TD><TD>
 ##GAME_ALLKILLS.PLASMA_KILL_DIRECT##
@@ -106,7 +110,7 @@ Lightninggun Kills
 ##GAME_ALLKILLS.LIGHTNING_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct BFG Kills
 </TD><TD>
 ##GAME_ALLKILLS.BFG_KILL_DIRECT##
@@ -126,7 +130,7 @@ Slime
 ##GAME_ALLKILLS.SELF_SLIME##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Lava
 </TD><TD>
 ##GAME_ALLKILLS.SELF_LAVA##
@@ -146,7 +150,7 @@ Cratered
 ##GAME_ALLKILLS.SELF_FALLING##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Suicide
 </TD><TD>
 ##GAME_ALLKILLS.SELF_SUICIDE##
@@ -155,11 +159,20 @@ Trigger Hurt (fall out of map)
 </TD><TD>
 ##GAME_ALLKILLS.SELF_TRIGGER_HURT##
 </TD></TR>
-</table><BR>
+</table>
+
+</TD></TR>
+</table>
+
+<p>
 
 Aggregate kill types<BR>
-<TABLE border=1>
-<TR><TD align=right>
+
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+<TABLE border=0>
+<TR bgcolor=#6a7aa0><TD align=right>
 Rocket
 </TD><TD>
 ##GAME_ALLKILLS.A_ROCKET_KILL##
@@ -169,7 +182,7 @@ Grenade
 ##GAME_ALLKILLS.A_GRENADE_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Plasma
 </TD><TD>
 ##GAME_ALLKILLS.A_PLASMA_KILL##
@@ -181,7 +194,7 @@ BFG
 
 <TR><TD colspan=5>&nbsp;</TD></tr>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Bullet
 </TD><TD>
 ##GAME_ALLKILLS.A_BULLET_KILL##
@@ -191,7 +204,7 @@ Explosive
 ##GAME_ALLKILLS.A_EXPLOSIVE_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Energy
 </TD><TD>
 ##GAME_ALLKILLS.A_ENERGY_KILL##
@@ -203,7 +216,7 @@ Other
 
 <TR><TD colspan=5>&nbsp;</TD></tr>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Hit Scan
 </TD><TD>
 ##GAME_ALLKILLS.A_HITSCAN_KILL##
@@ -214,45 +227,55 @@ Non - Hit Scan
 </TD></TR>
 
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Non-Weapon Suicide
 </TD><TD>
 ##GAME_ALLKILLS.A_SUICIDE_KILL##
 </TD><TD colspan=3></TD></TR>
 </table>
 
+</TD></TR>
+</table>
+
 <P>
 
 Item Stats:  Total Items: ##GAME_TOTITEMS##<BR>
-<TABLE border=1>
-<TD>Gauntlet</TD><TD>##GAME_ITEM.GAUNTLET##</TD>			<TD></TD><TD></TD>
-<TD>Armor Shard</TD><TD>##GAME_ITEM.ARMOR_SHARD##</TD>		<TD></TD><TD></TD></TR>
+
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+<TABLE border=0>
+<TD bgcolor=#6a7aa0>Gauntlet</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.GAUNTLET##</TD>			<TD></TD><TD></TD>
+<TD bgcolor=#6a7aa0>Armor Shard</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.ARMOR_SHARD##</TD>		<TD></TD><TD></TD></TR>
 
 <TD>Machinegun</TD><TD>##GAME_ITEM.MACHINEGUN##</TD>		<TD>Bullets</TD><TD>##GAME_ITEM.MACHINEGUN_A##</TD>
 <TD>Yellow Armor</TD><TD>##GAME_ITEM.ARMOR_YELLOW##</TD>	<TD>Battle Suit</TD><TD>##GAME_ITEM.BATTLESUIT##</TD></TR>
 
-<TD>Shotgun</TD><TD>##GAME_ITEM.SHOTGUN##</TD>				<TD>Shells</TD><TD>##GAME_ITEM.SHOTGUN_A##</TD>
-<TD>Red Armor</TD><TD>##GAME_ITEM.ARMOR_RED##</TD>			<TD>Flight</TD><TD>##GAME_ITEM.FLIGHT##</TD></TR>
+<TD bgcolor=#6a7aa0>Shotgun</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.SHOTGUN##</TD>				<TD bgcolor=#6a7aa0>Shells</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.SHOTGUN_A##</TD>
+<TD bgcolor=#6a7aa0>Red Armor</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.ARMOR_RED##</TD>			<TD bgcolor=#6a7aa0>Flight</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.FLIGHT##</TD></TR>
 
 <TD>Grenade Launcher</TD><TD>##GAME_ITEM.GRENADEL##</TD>	<TD>Grenades</TD><TD>##GAME_ITEM.GRENADEL_A##</TD>
 <TD>+5 Health</TD><TD>##GAME_ITEM.HEALTH_5##</TD>			<TD>Haste</TD><TD>##GAME_ITEM.HASTE##</TD></TR>
 
-<TD>Rocket Launcher</TD><TD>##GAME_ITEM.ROCKETL##</TD>		<TD>Rockets</TD><TD>##GAME_ITEM.ROCKETL_A##</TD>
-<TD>25 Health</TD><TD>##GAME_ITEM.HEALTH_25##</TD>			<TD>Invisibility</TD><TD>##GAME_ITEM.INVIS##</TD></TR>
+<TD bgcolor=#6a7aa0>Rocket Launcher</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.ROCKETL##</TD>		<TD bgcolor=#6a7aa0>Rockets</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.ROCKETL_A##</TD>
+<TD bgcolor=#6a7aa0>25 Health</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.HEALTH_25##</TD>			<TD bgcolor=#6a7aa0>Invisibility</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.INVIS##</TD></TR>
 
 <TD>Lightning Gun</TD><TD>##GAME_ITEM.LIGHTNING##</TD>		<TD>Lightning</TD><TD>##GAME_ITEM.LIGHTNING_A##</TD>
 <TD>50 Health</TD><TD>##GAME_ITEM.HEALTH_50##</TD>			<TD>Regeneration</TD><TD>##GAME_ITEM.REGEN##</TD></TR>
 
-<TD>Railgun</TD><TD>##GAME_ITEM.RAILGUN##</TD>				<TD>Slugs</TD><TD>##GAME_ITEM.RAILGUN_A##</TD>
-<TD>Mega Health</TD><TD>##GAME_ITEM.HEALTH_MEGA##</TD>		<TD>Quad</TD><TD>##GAME_ITEM.QUAD##</TD></TR>
+<TD bgcolor=#6a7aa0>Railgun</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.RAILGUN##</TD>				<TD bgcolor=#6a7aa0>Slugs</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.RAILGUN_A##</TD>
+<TD bgcolor=#6a7aa0>Mega Health</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.HEALTH_MEGA##</TD>		<TD bgcolor=#6a7aa0>Quad</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.QUAD##</TD></TR>
 
 <TD>Plasma Gun</TD><TD>##GAME_ITEM.PLASMA##</TD>			<TD>Cells</TD><TD>##GAME_ITEM.PLASMA_A##</TD>
 <TD>Red Flag</TD><TD>##GAME_ITEM.FLAG_RED##</TD>			<TD>Medkit</TD><TD>##GAME_ITEM.MEDKIT##</TD></TR>
 
-<TD>BFG</TD><TD>##GAME_ITEM.BFG##</TD>						<TD>BFG Ammo</TD><TD>##GAME_ITEM.BFG_A##</TD>
-<TD>Blue Flag</TD><TD>##GAME_ITEM.FLAG_BLUE##</TD>			<TD>Teleporter</TD><TD>##GAME_ITEM.TELE##</TD></TR>
+<TD bgcolor=#6a7aa0>BFG</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.BFG##</TD>						<TD bgcolor=#6a7aa0>BFG Ammo</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.BFG_A##</TD>
+<TD bgcolor=#6a7aa0>Blue Flag</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.FLAG_BLUE##</TD>			<TD bgcolor=#6a7aa0>Teleporter</TD><TD bgcolor=#6a7aa0>##GAME_ITEM.TELE##</TD></TR>
 
 </TABLE>
+
+</TD></TR>
+</table>
 
 <P><HR><P>
 ##CREDIT##

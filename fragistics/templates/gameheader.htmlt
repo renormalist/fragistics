@@ -6,5 +6,5 @@
 <a href="game_##STATS_PREVGAMENUMBER##.html">Previous Game</A>
 <img src="##USER_image_path##/levelshots/##GAME_MAPIMAGE##" width="256" height="256">
 <a href="game_##STATS_NEXTGAMENUMBER##.html">Next game</A><BR>
-<a href="gamelist.html">Game List</a> <a href="stats.html">Overall Stats</a> <a href="playerlist.html">Player stats</a> <a href="maplist.html">Map List</a> 
+<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a>&nbsp;-&nbsp;<a href="playerlist.html">Player stats</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a> <p>
 <P><HR><P>

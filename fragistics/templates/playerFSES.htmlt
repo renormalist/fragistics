@@ -5,15 +5,15 @@
 <center><h1>Player Rank - Frags, Score, Eff, Skill</H1>
 Last Updated: ##NOW##<BR>
 <P><HR><P>
-<a href="playerlist.html">Player List</a> <a href="gamelist.html">Game List</a> <a href="maplist.html">Map List</a> <a href="stats.html">Overall stats</a><P>
+<a href="playerlist.html">Player list</a>&nbsp;-&nbsp;<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a> <p>
 $$playerlistheader$$
 <P><HR><P>
 
-<TABLE><TR><TD valign=top>
+<TABLE><TR bgcolor="#7080a0"><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Frags</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Frags</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_FRAGS.TOTAL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_FRAGS.TOTAL##</TD></TR>
 @@ENDLOOP@@
@@ -21,9 +21,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Score</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Score</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_SCORE )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_SCORE##</TD></TR>
 @@ENDLOOP@@
@@ -31,9 +31,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Eff %</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Eff %</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_EFF.TOTAL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_EFF.TOTAL##</TD></TR>
 @@ENDLOOP@@
@@ -41,9 +41,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Skill</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Skill</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_SKILL.TOTAL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_SKILL.TOTAL##</TD></TR>
 @@ENDLOOP@@

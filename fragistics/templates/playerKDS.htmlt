@@ -5,15 +5,15 @@
 <center><h1>Player Rank - Kills, Deaths, Suicides</H1>
 Last Updated: ##NOW##<BR>
 <P><HR><P>
-<a href="playerlist.html">Player List</a> <a href="gamelist.html">Game List</a> <a href="maplist.html">Map List</a> <a href="stats.html">Overall stats</a><P>
+<a href="playerlist.html">Player list</a>&nbsp;-&nbsp;<a href="gamelist.html">Game List</a>&nbsp;-&nbsp;<a href="maplist.html">Map List</a>&nbsp;-&nbsp;<a href="stats.html">Overall Stats</a> <p>
 $$playerlistheader$$
 <P><HR><P>
 
-<TABLE><TR><TD valign=top>
+<TABLE><TR bgcolor="#7080a0"><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Kills</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Kills</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_KILLS.ALL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_KILLS.TOTAL##</TD></TR>
 @@ENDLOOP@@
@@ -21,9 +21,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Deaths</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Deaths</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.PLAYER_DEATHS.ALL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_DEATHS.TOTAL##</TD></TR>
 @@ENDLOOP@@
@@ -31,9 +31,9 @@ $$playerlistheader$$
 
 </TD><TD width=50></TD><TD valign=top>
 
-<TABLE border=1><TR><TD colspan=4>Suicides</TD></TR>
+<TABLE border=0><TR><TD colspan=4>Suicides</TD></TR>
 @@LOOP( LOOP_STATS_PLAYERS_T.0 - PLAYER_SUICIDES.ALL )@@
-<TR><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER.INDEX##</TD><TD>##PLAYER_NAME##
 </TD><TD><a href="##PLAYER_NAME.FILE##.html">info</a>
 </TD><TD>##PLAYER_SUICIDES.TOTAL##</TD></TR>
 @@ENDLOOP@@

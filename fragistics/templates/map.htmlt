@@ -1,7 +1,12 @@
 $$mapheader$$
 <a href="mapktable_##MAP_MAPNAME##.html">Kill Tables</A> <a href="mapplayer_##MAP_MAPNAME##.html">Player Stats</A> <a href="maprank_##MAP_MAPNAME##.html">Player Rank</A><BR>
 <P>
-<table><tr><td align=center>
+
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+
+<tr><td align=center>
 ##MAP_GAMES## Games Played<BR>
 Total Time: ##MAP_TIME.STR##<BR>
 ##MAP_PLAYERCOUNT## players<BR>
@@ -27,12 +32,13 @@ Games Played:
 <P>
 <TD></TR>
 
-<TR align=center><TD colspan=2>
+<TR bgcolor=#7080a0 align=center><TD colspan=2>
+
 
 Total Scores:<P>
 <font color=red>RED: ##MAP_TEAMSCORE.RED##</Font>
 <font color=blue>BLUE: ##MAP_TEAMSCORE.BLUE##</Font>
-<TABLE border=1>
+<TABLE border=0>
 
 <TR><TD>Name</TD><TD>Model</TD><TD>Ping</TD>
 <TD>HC</TD>
@@ -41,7 +47,7 @@ Total Scores:<P>
 <TD>1v1 Matches</TD><TD>1v1 Wins</TD><TD>1v1 Losses</TD>
 </TR>
 @@LOOP( LOOP_MAP_PLAYERS.(( PLAYER_SCORE * 1000 ) + PLAYER_FRAGS.ALL) / PLAYER_TOTTIME )@@
-<TR><TD>##PLAYER_NAME## </TD><TD>##PLAYER_MODEL##</TD><TD>##PLAYER_AVEPING##</TD>
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER_NAME## </TD><TD>##PLAYER_MODEL##</TD><TD>##PLAYER_AVEPING##</TD>
 <TD>##PLAYER_AVEHC##**IF( PLAYER_AVEBOTSKILL >= "1" )** B:##PLAYER_AVEBOTSKILL## **ENDIF** </TD>
 <TD>##PLAYER_KILLS.TOTAL##</TD><TD>##PLAYER_DEATHS.TOTAL##</TD><TD>##PLAYER_SUICIDES.TOTAL##</TD><TD>##PLAYER_FRAGS.TOTAL##</TD><TD>##PLAYER_SCORE##</TD>
 <TD>##PLAYER_KILLDIFF.TOTAL##</TD><TD>##PLAYER_EFF.TOTAL##</TD><TD>##PLAYER_SKILL.TOTAL##</TD><TD>!!.2f,PLAYER_KILLS.ALL / PLAYER_DEATHS.ALL!!</TD>
@@ -53,12 +59,12 @@ Total Scores:<P>
 </td></tr>
 
 
-<TR align=center><TD colspan=2>
+<TR bgcolor=#7080a0 align=center><TD colspan=2>
 &nbsp;<P>
 Per Game Scores:<P>
 <font color=red>RED: !! MAP_TEAMSCORE.RED / MAP_GAMES !!</Font>
 <font color=blue>BLUE: !! MAP_TEAMSCORE.BLUE / MAP_GAMES !!</Font>
-<TABLE border=1>
+<TABLE border=0>
 
 <TR><TD>Name</TD><TD>Games</TD><TD>Ping</TD>
 <TD>HC</TD>
@@ -67,7 +73,7 @@ Per Game Scores:<P>
 <TD>1v1 Matches</TD><TD>1v1 Wins</TD><TD>1v1 Losses</TD>
 </TR>
 @@LOOP( LOOP_MAP_PLAYERS.( PLAYER_PERGAME_SCORE * 1000 ) + PLAYER_PERGAME_FRAGS.ALL )@@
-<TR><TD>##PLAYER_NAME## </TD><TD>##PLAYER_GAMES##</TD><TD>##PLAYER_AVEPING##</TD>
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER_NAME## </TD><TD>##PLAYER_GAMES##</TD><TD>##PLAYER_AVEPING##</TD>
 <TD>##PLAYER_AVEHC##**IF( PLAYER_AVEBOTSKILL >= "1" )** B:##PLAYER_AVEBOTSKILL## **ENDIF** </TD>
 <TD>##PLAYER_PERGAME_KILLS.TOTAL##</TD><TD>##PLAYER_PERGAME_DEATHS.TOTAL##</TD><TD>##PLAYER_PERGAME_SUICIDES.TOTAL##</TD><TD>##PLAYER_PERGAME_FRAGS.TOTAL##</TD><TD>##PLAYER_PERGAME_SCORE##</TD>
 <TD>##PLAYER_PERGAME_KILLDIFF.TOTAL##</TD><TD>##PLAYER_EFF.TOTAL##</TD><TD>##PLAYER_SKILL.TOTAL##</TD><TD>!!.2f,PLAYER_PERGAME_KILLS.ALL / PLAYER_PERGAME_DEATHS.ALL!!</TD>
@@ -78,12 +84,13 @@ Per Game Scores:<P>
 &nbsp;<P>
 </td></tr>
 
-<TR align=center><TD colspan=2>
+
+<TR bgcolor=#7080a0 align=center><TD colspan=2>
 &nbsp;<P>
 Per Hour Scores:<P>
 <font color=red>RED: !! MAP_TEAMSCORE.RED * ( 3600 / MAP_TOTSECONDS ) !!</Font>
 <font color=blue>BLUE: !! MAP_TEAMSCORE.BLUE * ( 3600 / MAP_TOTSECONDS ) !!</Font>
-<TABLE border=1>
+<TABLE border=0>
 
 <TR><TD>Name</TD><TD>Time</TD><TD>Ping</TD>
 <TD>HC</TD>
@@ -92,7 +99,7 @@ Per Hour Scores:<P>
 <TD>1v1 Matches</TD><TD>1v1 Wins</TD><TD>1v1 Losses</TD>
 </TR>
 @@LOOP( LOOP_MAP_PLAYERS.( PLAYER_PERHOUR_SCORE * 1000 ) + PLAYER_PERHOUR_FRAGS.ALL )@@
-<TR><TD>##PLAYER_NAME## </TD><TD>##PLAYER_TOTTIME.STR##</TD><TD>##PLAYER_AVEPING##</TD>
+<TR **IF( PLAYER.INDEX % "2" )** **ELSE** bgcolor=#6a7aa0 **ENDIF** ><TD>##PLAYER_NAME## </TD><TD>##PLAYER_TOTTIME.STR##</TD><TD>##PLAYER_AVEPING##</TD>
 <TD>##PLAYER_AVEHC##**IF( PLAYER_AVEBOTSKILL >= "1" )** B:##PLAYER_AVEBOTSKILL## **ENDIF** </TD>
 <TD>##PLAYER_PERHOUR_KILLS.TOTAL##</TD><TD>##PLAYER_PERHOUR_DEATHS.TOTAL##</TD><TD>##PLAYER_PERHOUR_SUICIDES.TOTAL##</TD><TD>##PLAYER_PERHOUR_FRAGS.TOTAL##</TD><TD>##PLAYER_PERHOUR_SCORE##</TD>
 <TD>##PLAYER_PERHOUR_KILLDIFF.TOTAL##</TD><TD>##PLAYER_EFF.TOTAL##</TD><TD>##PLAYER_SKILL.TOTAL##</TD><TD>!!.2f,PLAYER_PERHOUR_KILLS.ALL / PLAYER_PERHOUR_DEATHS.ALL!!</TD>
@@ -105,11 +112,22 @@ Per Hour Scores:<P>
 
 </table>
 
+</TD></TR>
+</table>
+
+
+
+
 <P><HR><P>
 <H3>Kills by Type</H3><P>
 
-<TABLE border=1>
-<TR><TD align=right>
+
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD>
+
+
+<TABLE border=0>
+<TR bgcolor=#6a7aa0><TD align=right>
 All Kills
 </TD><TD>
 ##MAP_ALLKILLS.TOTAL_KILLS##
@@ -129,7 +147,7 @@ Machinegun Kills
 ##MAP_ALLKILLS.MACHINEGUN_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct Grenade Kills
 </TD><TD>
 ##MAP_ALLKILLS.GRENADE_KILL_DIRECT##
@@ -149,7 +167,7 @@ Rocket Splash Kills
 ##MAP_ALLKILLS.ROCKET_KILL_SPLASH##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct Plasmagun Kills
 </TD><TD>
 ##MAP_ALLKILLS.PLASMA_KILL_DIRECT##
@@ -169,7 +187,7 @@ Lightninggun Kills
 ##MAP_ALLKILLS.LIGHTNING_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Direct BFG Kills
 </TD><TD>
 ##MAP_ALLKILLS.BFG_KILL_DIRECT##
@@ -189,7 +207,7 @@ Slime
 ##MAP_ALLKILLS.SELF_SLIME##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Lava
 </TD><TD>
 ##MAP_ALLKILLS.SELF_LAVA##
@@ -209,7 +227,7 @@ Cratered
 ##MAP_ALLKILLS.SELF_FALLING##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Suicide
 </TD><TD>
 ##MAP_ALLKILLS.SELF_SUICIDE##
@@ -220,9 +238,15 @@ Trigger Hurt (fall out of map)
 </TD></TR>
 </table><BR>
 
+
+</TD></TR>
+<TR bgcolor=#7080a0><TD align=center>
+
+
 Aggregate kill types<BR>
-<TABLE border=1>
-<TR><TD align=right>
+<p>
+<TABLE border=0>
+<TR bgcolor=#6a7aa0><TD align=right>
 Rocket
 </TD><TD>
 ##MAP_ALLKILLS.A_ROCKET_KILL##
@@ -232,7 +256,7 @@ Grenade
 ##MAP_ALLKILLS.A_GRENADE_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Plasma
 </TD><TD>
 ##MAP_ALLKILLS.A_PLASMA_KILL##
@@ -244,7 +268,7 @@ BFG
 
 <TR><TD colspan=5>&nbsp;</TD></tr>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Bullet
 </TD><TD>
 ##MAP_ALLKILLS.A_BULLET_KILL##
@@ -254,7 +278,7 @@ Explosive
 ##MAP_ALLKILLS.A_EXPLOSIVE_KILL##
 </TD></TR>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Energy
 </TD><TD>
 ##MAP_ALLKILLS.A_ENERGY_KILL##
@@ -266,7 +290,7 @@ Other
 
 <TR><TD colspan=5>&nbsp;</TD></tr>
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Hit Scan
 </TD><TD>
 ##MAP_ALLKILLS.A_HITSCAN_KILL##
@@ -277,45 +301,58 @@ Non - Hit Scan
 </TD></TR>
 
 
-<TR><TD align=right>
+<TR bgcolor=#6a7aa0><TD align=right>
 Non-Weapon Suicide
 </TD><TD>
 ##MAP_ALLKILLS.A_SUICIDE_KILL##
 </TD><TD colspan=3></TD></TR>
 </table>
 
-<P>
+</TD></TR>
+</TABLE>
 
-Item Stats:  Total Items: ##MAP_TOTITEMS##<BR>
-<TABLE border=1>
-<TD>Gauntlet</TD><TD>##MAP_ITEM.GAUNTLET##</TD>			<TD></TD><TD></TD>
-<TD>Armor Shard</TD><TD>##MAP_ITEM.ARMOR_SHARD##</TD>	<TD></TD><TD></TD></TR>
 
-<TD>Machinegun</TD><TD>##MAP_ITEM.MACHINEGUN##</TD>		<TD>Bullets</TD><TD>##MAP_ITEM.MACHINEGUN_A##</TD>
-<TD>Yellow Armor</TD><TD>##MAP_ITEM.ARMOR_YELLOW##</TD>	<TD>Battle Suit</TD><TD>##MAP_ITEM.BATTLESUIT##</TD></TR>
+<P><HR><P>
+<H3>Item Stats</H3><P>
 
-<TD>Shotgun</TD><TD>##MAP_ITEM.SHOTGUN##</TD>			<TD>Shells</TD><TD>##MAP_ITEM.SHOTGUN_A##</TD>
-<TD>Red Armor</TD><TD>##MAP_ITEM.ARMOR_RED##</TD>		<TD>Flight</TD><TD>##MAP_ITEM.FLIGHT##</TD></TR>
+<TABLE border=0 cellpadding=10>
+<TR bgcolor=#7080a0><TD align=center>
 
-<TD>Grenade Launcher</TD><TD>##MAP_ITEM.GRENADEL##</TD>	<TD>Grenades</TD><TD>##MAP_ITEM.GRENADEL_A##</TD>
-<TD>+5 Health</TD><TD>##MAP_ITEM.HEALTH_5##</TD>		<TD>Haste</TD><TD>##MAP_ITEM.HASTE##</TD></TR>
+Total Items: ##MAP_TOTITEMS##<BR>
+<p>
+<TABLE border=0>
+<TD>Gauntlet</TD><TD>##MAP_ITEM.GAUNTLET##</TD><TD width=20></TD><TD></TD><TD></TD><TD width=20></TD>
+<TD>Armor Shard</TD><TD>##MAP_ITEM.ARMOR_SHARD##</TD><TD width=20></TD>	<TD></TD><TD></TD><TD width=20></TD></TR>
 
-<TD>Rocket Launcher</TD><TD>##MAP_ITEM.ROCKETL##</TD>	<TD>Rockets</TD><TD>##MAP_ITEM.ROCKETL_A##</TD>
-<TD>25 Health</TD><TD>##MAP_ITEM.HEALTH_25##</TD>		<TD>Invisibility</TD><TD>##MAP_ITEM.INVIS##</TD></TR>
+<TD bgcolor=#6a7aa0>Machinegun</TD><TD>##MAP_ITEM.MACHINEGUN##</TD><TD width=20></TD> <TD>Bullets</TD><TD>##MAP_ITEM.MACHINEGUN_A##</TD><TD width=20></TD>
+<TD bgcolor=#6a7aa0>Yellow Armor</TD><TD>##MAP_ITEM.ARMOR_YELLOW##</TD><TD width=20></TD>	<TD>Battle Suit</TD><TD>##MAP_ITEM.BATTLESUIT##</TD><TD width=20></TD></TR>
 
-<TD>Lightning Gun</TD><TD>##MAP_ITEM.LIGHTNING##</TD>	<TD>Lightning</TD><TD>##MAP_ITEM.LIGHTNING_A##</TD>
-<TD>50 Health</TD><TD>##MAP_ITEM.HEALTH_50##</TD>		<TD>Regeneration</TD><TD>##MAP_ITEM.REGEN##</TD></TR>
+<TD>Shotgun</TD><TD>##MAP_ITEM.SHOTGUN##</TD><TD width=20></TD>			<TD>Shells</TD><TD>##MAP_ITEM.SHOTGUN_A##</TD><TD width=20></TD>
+<TD>Red Armor</TD><TD>##MAP_ITEM.ARMOR_RED##</TD><TD width=20></TD>		<TD>Flight</TD><TD>##MAP_ITEM.FLIGHT##</TD><TD width=20></TD></TR>
 
-<TD>Railgun</TD><TD>##MAP_ITEM.RAILGUN##</TD>			<TD>Slugs</TD><TD>##MAP_ITEM.RAILGUN_A##</TD>
-<TD>Mega Health</TD><TD>##MAP_ITEM.HEALTH_MEGA##</TD>	<TD>Quad</TD><TD>##MAP_ITEM.QUAD##</TD></TR>
+<TD bgcolor=#6a7aa0>Grenade Launcher</TD><TD>##MAP_ITEM.GRENADEL##</TD><TD width=20></TD>	<TD>Grenades</TD><TD>##MAP_ITEM.GRENADEL_A##</TD><TD width=20></TD>
+<TD bgcolor=#6a7aa0>+5 Health</TD><TD>##MAP_ITEM.HEALTH_5##</TD><TD width=20></TD>		<TD>Haste</TD><TD>##MAP_ITEM.HASTE##</TD><TD width=20></TD></TR>
 
-<TD>Plasma Gun</TD><TD>##MAP_ITEM.PLASMA##</TD>			<TD>Cells</TD><TD>##MAP_ITEM.PLASMA_A##</TD>
-<TD>Red Flag</TD><TD>##MAP_ITEM.FLAG_RED##</TD>			<TD>Medkit</TD><TD>##MAP_ITEM.MEDKIT##</TD></TR>
+<TD>Rocket Launcher</TD><TD>##MAP_ITEM.ROCKETL##</TD><TD width=20></TD>	<TD>Rockets</TD><TD>##MAP_ITEM.ROCKETL_A##</TD><TD width=20></TD>
+<TD>25 Health</TD><TD>##MAP_ITEM.HEALTH_25##</TD><TD width=20></TD>		<TD>Invisibility</TD><TD>##MAP_ITEM.INVIS##</TD><TD width=20></TD></TR>
 
-<TD>BFG</TD><TD>##MAP_ITEM.BFG##</TD>					<TD>BFG Ammo</TD><TD>##MAP_ITEM.BFG_A##</TD>
-<TD>Blue Flag</TD><TD>##MAP_ITEM.FLAG_BLUE##</TD>		<TD>Teleporter</TD><TD>##MAP_ITEM.TELE##</TD></TR>
+<TD bgcolor=#6a7aa0>Lightning Gun</TD><TD>##MAP_ITEM.LIGHTNING##</TD><TD width=20></TD>	<TD>Lightning</TD><TD>##MAP_ITEM.LIGHTNING_A##</TD><TD width=20></TD>
+<TD bgcolor=#6a7aa0>50 Health</TD><TD>##MAP_ITEM.HEALTH_50##</TD><TD width=20></TD>		<TD>Regeneration</TD><TD>##MAP_ITEM.REGEN##</TD><TD width=20></TD></TR>
+
+<TD>Railgun</TD><TD>##MAP_ITEM.RAILGUN##</TD><TD width=20></TD>			<TD>Slugs</TD><TD>##MAP_ITEM.RAILGUN_A##</TD><TD width=20></TD>
+<TD>Mega Health</TD><TD>##MAP_ITEM.HEALTH_MEGA##</TD><TD width=20></TD>	<TD>Quad</TD><TD>##MAP_ITEM.QUAD##</TD><TD width=20></TD></TR>
+
+<TD bgcolor=#6a7aa0>Plasma Gun</TD><TD>##MAP_ITEM.PLASMA##</TD><TD width=20></TD>			<TD>Cells</TD><TD>##MAP_ITEM.PLASMA_A##</TD><TD width=20></TD>
+<TD bgcolor=#6a7aa0>Red Flag</TD><TD>##MAP_ITEM.FLAG_RED##</TD><TD width=20></TD>			<TD>Medkit</TD><TD>##MAP_ITEM.MEDKIT##</TD><TD width=20></TD></TR>
+
+<TD>BFG</TD><TD>##MAP_ITEM.BFG##</TD><TD width=20></TD>					<TD>BFG Ammo</TD><TD>##MAP_ITEM.BFG_A##</TD><TD width=20></TD>
+<TD>Blue Flag</TD><TD>##MAP_ITEM.FLAG_BLUE##</TD><TD width=20></TD>		<TD>Teleporter</TD><TD>##MAP_ITEM.TELE##</TD><TD width=20></TD></TR>
 
 </TABLE>
+
+</TD></TR>
+</TABLE>
+
 
 <P><HR><P>
 ##CREDIT##
