@@ -87,10 +87,10 @@ bool GameslogParser::Parse(int startline){
 
 	switch(evt->event){
 	case EVENT_GAMESTART:{
-	    printf ("DBG: *** EVENT_GAMESTART\n");
+	  //printf ("DBG: *** EVENT_GAMESTART\n");
 	    evt->print (); // ss5
 	    if(currentgame==NULL){
-		printf ("DBG: *** a\n");
+	      //printf ("DBG: *** a\n");
 		currentgame= new Game(evt->name,
 				      evt->how,
 				      (evt->time_min*60+evt->time_sec),
@@ -100,9 +100,9 @@ bool GameslogParser::Parse(int startline){
 				      stats);
 		printf("Game %d\n", stats->GetGames());
 	    }else{
-		printf ("DBG: *** b\n");
+	      //printf ("DBG: *** b\n");
 		if(currentgame->GetType() == GAMETYPE_1V1 && evt->how == GAMETYPE_1V1){
-		    printf ("DBG: Weiterführung 1v1\n");
+		  //printf ("DBG: Weiterführung 1v1\n");
 		    if( !strcmp(evt->name,currentgame->GetMapname().c_str()) ){
 			//continuation of 1V1 game - different players
 			currentgame->GameReset1v1(evt->time_min*60+evt->time_sec);
@@ -120,7 +120,7 @@ bool GameslogParser::Parse(int startline){
 			printf("Game %d\n", stats->GetGames());
 		    }
 		}else{
-		    printf ("DBG: *** c\n");
+		  //printf ("DBG: *** c\n");
 		    if(currentgame->GetType() != GAMETYPE_1V1)
 			printf("ERROR: new game while current game not done!\n");
 		    stats->AddGameToTotal(currentgame,linecount);
@@ -306,7 +306,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 			    if(ptr1!=NULL){
 				ptr1+=11;
 				evt->how=atoi(ptr1);
-				printf ("DBG: *** gametype gesetzt: %d\n", evt->how);
+				//printf ("DBG: *** gametype gesetzt: %d\n", evt->how);
 			    }
 			    
 			    //ptr1=strstr(ptr2+1,"capturelimit\\"); // ss5

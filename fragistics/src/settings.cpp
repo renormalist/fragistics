@@ -131,13 +131,13 @@ int Settings::ParseSettings(char *filename, int argc_, char **argv_){
 	FindSetting(&bg_color, "HTML","bg_color", "#000000");
 	FindSetting(&bg_image, "HTML","bg_image", "");
 
-	FindSetting(&namecolors[0], "HTML","name0", "white");
+	FindSetting(&namecolors[0], "HTML","name0", "black");
 	FindSetting(&namecolors[1], "HTML","name1", "red");
-	FindSetting(&namecolors[2], "HTML","name2", "#00FF00");
+	FindSetting(&namecolors[2], "HTML","name2", "green");
 	FindSetting(&namecolors[3], "HTML","name3", "yellow");
 	FindSetting(&namecolors[4], "HTML","name4", "blue");
 	FindSetting(&namecolors[5], "HTML","name5", "cyan");
-	FindSetting(&namecolors[6], "HTML","name6", "#FF00FF");
+	FindSetting(&namecolors[6], "HTML","name6", "magenta");
 	FindSetting(&namecolors[7], "HTML","name7", "white");
 	FindSetting(&namecolors[8], "HTML","name8", "white");
 	FindSetting(&namecolors[9], "HTML","name9", "white");

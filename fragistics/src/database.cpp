@@ -125,7 +125,7 @@ int database::writeplayers(){
 			do{
 				buf.erase();
 				p->Write(&buf,2);
-				printf(" writting player %s\t",buf.c_str());
+				printf(" writing player %s\t",buf.c_str());
 				p->WriteToDb(&cf);
 			}while((p=pl->GetNext())!=NULL);
 		}
@@ -184,7 +184,7 @@ int	database::writemaps(){
 				if(m!=NULL){
 
 					m->GetName(&buf);
-					printf(" writting map %s",buf.c_str());
+					printf(" writing map %s",buf.c_str());
 
 					settings.GetDatabasepath(&path);
 					path+=os.PathSeparator;

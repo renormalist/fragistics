@@ -563,10 +563,10 @@ there was no \r\n on the last line
 		if(juststore && dbstatus<DB_FILESTORED){
 		    parse=false;
 		    db.write();
-		    printf("\nWritting Database\n");
+		    printf("\nWriting Database\n");
 		}
 		if(dbstatus>DB_DONTADD && logdb==DB_DONTADD && !juststore){
-		    printf("\nWritting Database\n");
+		    printf("\nWriting Database\n");
 		    db.write();
 		}
 		
@@ -607,7 +607,7 @@ there was no \r\n on the last line
 	}
 	//is it time to save database
 	if(settings.GetUseDB() && dbstatus>DB_DONTADD && !juststore){
-	    printf("\nWritting Database\n");
+	    printf("\nWriting Database\n");
 	    db.write();
 	}
 	

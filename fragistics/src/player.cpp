@@ -152,7 +152,7 @@ void SimplePlayer::parsename(){
 	string tmp;
 	ptr1=name;
 
-	settings.GetNameColor(0,&tmp);
+	settings.GetNameColor(7,&tmp); // default color = white
 	htmlname="<font color=";
 	vertname="<font color=";
 	htmlname+=tmp;
@@ -160,38 +160,77 @@ void SimplePlayer::parsename(){
 	htmlname+=">";
 	vertname+=">";
 	
-	while(*ptr1!='\0'){
-		if(*ptr1=='^'){
-			ptr1++;
-			if(*ptr1>='0'&&*ptr1<='9'){
-				htmlname+="</font><font color=";
-				vertname+="</font><font color=";
-				settings.GetNameColor((*ptr1)-'0',&tmp);
-				htmlname+=tmp;
-				vertname+=tmp;
-				htmlname+=">";
-				vertname+=">";
-				
-			}else if(*ptr1=='^'){
-				htmlname+="^";
-				vertname+="^<BR>";
-				plainname+="^";
-			}else{
-				htmlname+="^";
-				vertname+="^<BR>";
-				plainname+="^";
-				htmlname+=*ptr1;
-				vertname+=*ptr1;
-				vertname+="<BR>";
-				plainname+=*ptr1;
-			}
-		}else{
-			htmlname+=*ptr1;
-			vertname+=*ptr1;
-			vertname+="<BR>";
-			plainname+=*ptr1;
-		}
+	while (*ptr1!='\0') {
+	  // simple colors
+	  if (*ptr1=='^') {
+	    ptr1++;
+	    if (*ptr1>='0'&&*ptr1<='9') {
+	      htmlname+="</font><font color=";
+	      vertname+="</font><font color=";
+	      settings.GetNameColor((*ptr1)-'0',&tmp);
+	      htmlname+=tmp;
+	      vertname+=tmp;
+	      htmlname+=">";
+	      vertname+=">";
+	    }
+	    // special char ^
+	    else if (*ptr1=='^') {
+	      htmlname+="^";
+	      vertname+="^<BR>";
+	      plainname+="^";
+	    }
+	    // explicit rgb code
+	    else if (*ptr1=='X' || *ptr1=='x') {
+	      string rgbCode = "#";
+	      for (int c=0; c<6; c++) { // read 6 more characters
 		ptr1++;
+		rgbCode+=(*ptr1);
+	      }
+	      tmp = rgbCode;
+	      htmlname+="</font><font color=";
+	      vertname+="</font><font color=";
+	      htmlname+=tmp;
+	      vertname+=tmp;
+	      htmlname+=">";
+	      vertname+=">";
+	      //printf ("DBG: color %s\n", rgbCode.c_str());
+	    }
+	    // ignore special feature ^b: blinking --> ignore
+	    else if (*ptr1=='B' || *ptr1=='b') {
+	      // do nothing
+	    }
+	    // special feature ^f: alternating text --> ignore
+	    else if (*ptr1=='F' || *ptr1=='f') {
+	      // do nothing
+	    }
+	    // special feature: reset --> map to white color
+	    else if (*ptr1=='N' || *ptr1=='n') {
+	      tmp = "white";
+	      htmlname+="</font><font color=";
+	      vertname+="</font><font color=";
+	      htmlname+=tmp;
+	      vertname+=tmp;
+	      htmlname+=">";
+	      vertname+=">";
+	    }
+	    // default
+	    else {
+	      htmlname+="^";
+	      vertname+="^<BR>";
+	      plainname+="^";
+	      htmlname+=*ptr1;
+	      vertname+=*ptr1;
+	      vertname+="<BR>";
+	      plainname+=*ptr1;
+	    }
+	  }
+	  else {
+	    htmlname+=*ptr1;
+	    vertname+=*ptr1;
+	    vertname+="<BR>";
+	    plainname+=*ptr1;
+	  }
+	  ptr1++;
 	}
 	htmlname+="</font>";
 	vertname+="</font>";

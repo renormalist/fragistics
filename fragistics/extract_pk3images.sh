@@ -4,7 +4,7 @@
 #
 # This shell script extracts all images needed for Fragistics 
 # out of a given .pk3 file, converts them as needed by Fragistics and 
-# puts the resulting images into the output/images directory.
+# puts the resulting images into the images directory.
 #
 # Use:
 #
@@ -45,7 +45,7 @@ PAK=${1}
 # (relative to Fragistics base dir)
 ###################################
 
-IMAGEDIR=output/images
+IMAGEDIR=images
 
 
 # executables
@@ -76,7 +76,7 @@ function warn () {
 ################################# go #####################################
 
 function extract_pk3 () {
-  echo "EXTRACT IMAGES FROM PK3 ARCHIVE."
+  echo "EXTRACT IMAGES FROM PK3 ARCHIVE: " ${PAK}
   echo "--------------------------------"
 
   if [ ! -r "${PAK}" ] ; then
@@ -101,6 +101,10 @@ function extract_pk3 () {
     cd levelshots
     for i in `find -name "*.jpg" -maxdepth 1` ; do
       bname=`basename $i .jpg` 
+      ${MV} $i `echo $bname|tr 'a-z' 'A-Z'`.jpg 2> /dev/null
+    done
+    for i in `find -name "*.JPG" -maxdepth 1` ; do
+      bname=`basename $i .JPG` 
       ${MV} $i `echo $bname|tr 'a-z' 'A-Z'`.jpg 2> /dev/null
     done
     echo "done"

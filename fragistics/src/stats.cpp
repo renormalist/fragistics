@@ -287,10 +287,10 @@ void Stats::AddGameToTotal(Game *game, int lastline)
 	filedest+="_";
 	filedest+=itoa(games,numbuf,10);
 	template_= new HtmlTemplate(file.c_str(), filedest.c_str(),this);
-	printf("Writting template %s\n",filedest.c_str());
+	printf("Writing template %s\n",filedest.c_str());
 	bool ret=template_->Write();
 	if(ret==false){
-	    printf("Error writting template %s\n",file.c_str());
+	    printf("Error writing template %s\n",file.c_str());
 	}
 	delete template_;
     }
@@ -591,10 +591,10 @@ bool Stats::WriteMainStats(){
 	settings.GetTemplatesGamePath(i,&filedest);
 	filedest+="_0";
 	template_= new HtmlTemplate(file.c_str(), filedest.c_str(),this);
-	printf("Writting template %s\n",filedest.c_str());
+	printf("Writing template %s\n",filedest.c_str());
 	ret=template_->Write();
 	if(ret==false){
-	    printf("Error writting template %s\n",file.c_str());
+	    printf("Error writing template %s\n",file.c_str());
 	    err=true;
 	}
 	delete template_;
@@ -603,10 +603,10 @@ bool Stats::WriteMainStats(){
 	filedest+="_";
 	filedest+=itoa(games+1,numbuf,10);
 	template_= new HtmlTemplate(file.c_str(), filedest.c_str(),this);
-	printf("Writting template %s\n",filedest.c_str());
+	printf("Writing template %s\n",filedest.c_str());
 	ret=template_->Write();
 	if(ret==false){
-	    printf("Error writting template %s\n",file.c_str());
+	    printf("Error writing template %s\n",file.c_str());
 	    err=true;
 	}
 	delete template_;
@@ -615,10 +615,10 @@ bool Stats::WriteMainStats(){
     //gamelist
     settings.GetTemplatesGamelist(&file);
     template_= new HtmlTemplate(file.c_str(), file.c_str(),this);
-    printf("Writting template %s\n",file.c_str());
+    printf("Writing template %s\n",file.c_str());
     ret=template_->Write();
     if(ret==false){
-	printf("Error writting template %s\n",file.c_str());
+	printf("Error writing template %s\n",file.c_str());
 	err=true;
     }
     delete template_;
@@ -637,10 +637,10 @@ bool Stats::WriteMainStats(){
 		    filedest+="_";
 		    filedest+=mapname;
 		    template_= new HtmlTemplate(file.c_str(), filedest.c_str(),this);
-		    printf("Writting template %s\n",filedest.c_str());
+		    printf("Writing template %s\n",filedest.c_str());
 		    ret=template_->Write();
 		    if(ret==false){
-			printf("Error writting template %s\n",filedest.c_str());
+			printf("Error writing template %s\n",filedest.c_str());
 			err=true;
 		    }
 		    delete template_;
@@ -664,10 +664,10 @@ bool Stats::WriteMainStats(){
 	    if(currentplayer->GetModified()){
 		currentplayer->GetFileName(&filedest);
 		template_= new HtmlTemplate(file.c_str(), filedest.c_str(),this);
-		printf("Writting template %s\n",filedest.c_str());
+		printf("Writing template %s\n",filedest.c_str());
 		ret=template_->Write();
 		if(ret==false){
-		    printf("Error writting template %s\n",filedest.c_str());
+		    printf("Error writing template %s\n",filedest.c_str());
 		    err=true;
 		}
 		delete template_;
@@ -680,10 +680,10 @@ bool Stats::WriteMainStats(){
     for(i=0;i<settings.GetTemplatesMainNumber();i++){
 	settings.GetTemplatesMainPath(i,&file);
 	template_= new HtmlTemplate(file.c_str(), file.c_str(),this);
-	printf("Writting template %s\n",file.c_str());
+	printf("Writing template %s\n",file.c_str());
 	ret=template_->Write();
 	if(ret==false){
-	    printf("Error writting template %s\n",file.c_str());
+	    printf("Error writing template %s\n",file.c_str());
 	    err=true;
 	}
 	delete template_;
