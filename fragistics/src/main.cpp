@@ -19,18 +19,19 @@
    
    Brian Risinger contact info:
    
-   troz_@xoommail.com		preferred
-   troz_@hotmail.com		also ok
-   risinger@hoflink.com	if unable to reach otherwise
+     troz_@xoommail.com		preferred
+     troz_@hotmail.com		also ok
+     risinger@hoflink.com	if unable to reach otherwise
+   
+     98 Stone Lane
+     Levittown, NY  11756
+     USA
 
+   
    Steffen Schwigon (maintainer since 2002) contact info:
 
-   schwigon@sax.de
-   http://fragistics.sourceforge.net
-   
-   98 Stone Lane
-   Levittown, NY  11756
-   USA
+     schwigon@sax.de
+     http://fragistics.sourceforge.net
    
 */
 

@@ -1,0 +1,6 @@
+			     ____________
+			     INSTALLATION
+
+    ./configure
+    make
+    make install                      (as user "root")

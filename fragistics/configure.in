@@ -1,0 +1,35 @@
+AC_INIT(src/gameslogparser.cpp)
+AM_INIT_AUTOMAKE(fragistics,1.6.0)
+
+dnl programs
+AC_PATH_PROG(PERL,perl)
+AC_PATH_PROG(GREP,grep)
+AC_PROG_AWK
+AC_PROG_CXX
+
+dnl Evaluate Perl sitelib
+PERL_SITELIB=`($PERL -e 'use Config; print $Config{sitelib};') 2>/dev/null`
+if test -z "$PERL_SITELIB" -o ! -d "$PERL_SITELIB"; then
+	echo "$ac_t""unable to determine perl module directory $PERL_SITELIB" 1>&6
+        exit 1
+else
+	echo "checking for perl site lib... $PERL_SITELIB"
+fi
+
+AC_SUBST(PERL_SITELIB)
+AC_SUBST(PKGLIBDIR)
+
+AC_OUTPUT(
+  Makefile
+  src/Makefile
+  conf/Makefile
+  logs/Makefile
+  perl/Makefile
+  tools/Makefile
+  images/Makefile
+  images/chart/Makefile
+  images/models/Makefile
+  images/weapons/Makefile
+  images/levelshots/Makefile
+  templates/Makefile
+)
