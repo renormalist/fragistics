@@ -121,19 +121,20 @@ bool GameslogParser::Parse(int startline){
 		    }
 		}else{
 		  //printf ("DBG: *** c\n");
-		    if(currentgame->GetType() != GAMETYPE_1V1)
+		  if(currentgame->GetType() != GAMETYPE_1V1) {
 			printf("ERROR: new game while current game not done!\n");
-		    stats->AddGameToTotal(currentgame,linecount);
+		  }
+		  stats->AddGameToTotal(currentgame,linecount);
 		    
-		    delete currentgame;
-		    currentgame= new Game(evt->name,
-					  evt->how,
-					  (evt->time_min*60+evt->time_sec),
-					  evt->wins,
-					  evt->losses,
-					  evt->team,
-					  stats);
-		    //printf("Game %d\n", stats->GetGames()); // ss5
+		  delete currentgame;
+		  currentgame= new Game(evt->name,
+					evt->how,
+					(evt->time_min*60+evt->time_sec),
+					evt->wins,
+					evt->losses,
+					evt->team,
+					stats);
+		  //printf("Game %d\n", stats->GetGames()); // ss5
 		}
 	    }
 	    break;
@@ -215,16 +216,15 @@ bool GameslogParser::Parse(int startline){
 	    break;
 	}
 	case EVENT_GAMEEND:{
-	    if(currentgame!=NULL){
-		currentgame->HandleEvent(evt);
-		
-		if(currentgame->GetType()!=GAMETYPE_1V1){
-		    stats->AddGameToTotal(currentgame,linecount);
-		    delete currentgame;
-		    currentgame=NULL;
-		}
-	    }
-	    break;
+	  //printf ("DBG: *** EVENT_GAMEEND\n");
+	  if(currentgame!=NULL){
+	    currentgame->HandleEvent(evt);
+	    stats->AddGameToTotal(currentgame,linecount);
+	    //printf ("DBG: *** ok -> EVENT_GAMEEND bei != 1V1 \n");
+	    delete currentgame;
+	    currentgame=NULL;
+	  }
+	  break;
 	}
 	case EVENT_SAY:{
 	    //msgs++;

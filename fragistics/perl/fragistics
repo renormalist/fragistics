@@ -395,8 +395,8 @@ sub init {
 sub main {
   # cmd line args and usage
   read_cmdline_args();
-  pod2usage(1) if $HELP;
-  pod2usage(-exitstatus => 0, -verbose => 2) if $MAN;
+  pod2usage (1) if $HELP;
+  pod2usage (-exitstatus => 0, -verbose => 2) if $MAN;
 
   if ($VERBOSE) {
     print "Fragistics frontend v0.0.1, (c) 2002 Steffen Schwigon\n";
