@@ -18,10 +18,10 @@ Ping: ##PLAYER_AVEPING## &nbsp; HC: ##PLAYER_AVEHC##<BR>
 Score: ##PLAYER_SCORE##  &nbsp; Average Life in seconds: <b>!!%.0f,PLAYER_TOTTIME 1/ PLAYER_DEATHS.ALL!!</b><BR>
 Rank: ##PLAYER_RANK##<BR>
 <table>
-<tr><td>FFA Games: <b>##PLAYER_GAMES.FFA##</b></td><td>FFA Wins: <b>##PLAYER_WINS.FFA##</b></td><td>FFA Place: <b>##PLAYER_FFAPLACE##</b></td><td></TD></tr>
-<tr><td>1v1 Games: <b>##PLAYER_GAMES.1V1##</b></td><td>1v1 Matches: <b>##PLAYER_MATCHES.1V1##</b></td><td>1v1 Wins: <b>##PLAYER_WINS.1V1##</b></td><td>1v1 Losses: <b>##PLAYER_LOSSES.1V1##</b></TD></TR>
-<tr><td>TDM Games: <b>##PLAYER_GAMES.TDM##</b></td><td>TDM Wins: <b>##PLAYER_WINS.TDM##</b></td><td></td><td></TD></tr>
-<tr><td>CTF Games: <b>##PLAYER_GAMES.CTF##</b></td><td>CTF Wins: <b>##PLAYER_WINS.CTF##</b></td><td></td><td></TD></tr>
+<tr><td><b>1v1</b></td><td> Games: <b>##PLAYER_GAMES.1V1##</b>,</td><td>Matches: <b>##PLAYER_MATCHES.1V1##</b>,</td><td><u>Wins</u>: <b>##PLAYER_WINS.1V1##</b>,</td><td>Losses: <b>##PLAYER_LOSSES.1V1##</b></TD></TR>
+<tr><td><b>FFA</b></td><td> Games: <b>##PLAYER_GAMES.FFA##</b>,</td><td></td><td><u>Wins</u>: <b>##PLAYER_WINS.FFA##</b>,</td><td>Place: <b>##PLAYER_FFAPLACE##</b></td><td></TD></tr>
+<tr><td><b>TDM</b></td><td> Games: <b>##PLAYER_GAMES.TDM##</b>,</td><td></td><td><u>Wins</u>: <b>##PLAYER_WINS.TDM##</b>,</td><td></td><td></TD></tr>
+<tr><td><b>CTF</b></td><td> Games: <b>##PLAYER_GAMES.CTF##</b>,</td><td></td><td><u>Wins</u>: <b>##PLAYER_WINS.CTF##</b>,</td><td></td><td></TD></tr>
 </TABLE>
 
 </TD><TD>
