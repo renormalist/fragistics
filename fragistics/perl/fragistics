@@ -322,7 +322,7 @@ sub process_log {
     return 0;
   } else {
     print "Create $destdir\n" if $VERBOSE;
-    if (!system ('mkdir', '-p', $destdir)) {  # returns 0 if ok
+    if (system ('mkdir', '-p', $destdir)) {  # returns 0 if ok
       print STDERR "Can't create $destdir\n";
       return 0;
     }
@@ -330,13 +330,13 @@ sub process_log {
 
   # call parameterized fragistics
   print "Execute $RAWFRAGISTICS (the $MYNAME backend) ...\n* $okfile -> $destdir\n" if $VERBOSE;
-  if (!system ($RAWFRAGISTICS,
-	       '\LOGS/number_of_logs', 1,
-	       '\LOGS/logpath0', $okfile,
-	       '\MAIN/dest_path', $destdir,
-	       '\MAIN/cfgfile', $CFGFILE,
-	       '\MAIN/src_path', $TPLTPATH
-	      )) {
+  if (system ($RAWFRAGISTICS,                # system returns 0 if ok
+	      '\LOGS/number_of_logs', 1,
+	      '\LOGS/logpath0', $okfile,
+	      '\MAIN/dest_path', $destdir,
+	      '\MAIN/cfgfile', $CFGFILE,
+	      '\MAIN/src_path', $TPLTPATH
+	     )) {
     print STDERR "$@";
     return 0;
   }
