@@ -1,3 +1,8 @@
-This is the directory where the output html is generated.
-This readme only exists to ensure the directory isn't pruned
+This is the directory where the output html is generated if
+the fragistics engine is used without frontend. 
+If used with frontend, the output is generated depending on
+logfilename, e.g.: 
+  $HOME/.fragistics/stats_<logfilebasename>/
+
+This readme mainly exists to ensure the directory isn't pruned
 on cvs update.
