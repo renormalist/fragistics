@@ -12,7 +12,7 @@ SOURCES = database.cpp crosstable.cpp htmlfile.cpp game.cpp player.cpp \
           os.cpp main.cpp stats.cpp settings.cpp gameslogparser.cpp \
           fileparser.cpp gameevent.cpp aux.cpp
 
-TARGET = fragistics
+TARGET = rawfragistics
 
 RM = /bin/rm -f
 
@@ -26,7 +26,7 @@ all1: $(TARGET)
 
 all2:
 	for i in *.cpp ; do g++ -c $$i ; done 
-	g++ -o fragistics *.o 
+	g++ -o $(TARGET) *.o 
 
 $(TARGET): $(SOURCES)
 	g++ -g -o $@ $(SOURCES)

@@ -28,10 +28,11 @@ use strict;
 use warnings;
 
 # constants
-my $MYNAME   = 'fragistics';
-my $TPLTNAME = 'templates';
-my $MAXLEN   = 1024;
-my $CFGNAME  = "$MYNAME.conf";
+my $MYNAME        = 'fragistics';
+my $TPLTNAME      = 'templates';
+my $MAXLEN        = 1024;
+my $CFGNAME       = "$MYNAME.conf";
+my $RAWFRAGISTICS = 'rawfragistics';
 
 # global cmdline options
 my $CFGFILE          = undef;
@@ -252,8 +253,8 @@ sub process_log {
   }
 
   # call parameterized fragistics
-  print "Execute $MYNAME $okfile -> $destdir ...\n" if $VERBOSE;
-  system ('fragistics',
+  print "Execute $RAWFRAGISTICS (the $MYNAME backend) ...\n* $okfile -> $destdir\n" if $VERBOSE;
+  system ($RAWFRAGISTICS,
 	  '\LOGS/number_of_logs', 1,
 	  '\LOGS/logpath0', $okfile,
 	  '\MAIN/dest_path', $destdir,
