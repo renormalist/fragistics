@@ -469,6 +469,7 @@ public:
 	int ParseSettings(char *filename, int argc_, char **argv_);
 
 	bool FindSetting(string *value, const char* section,const char* name, const char* default_);
+	int Write();
 
 	int GetKilltableHilitelevels(){return hilite_levels;};
 	int GetKilltableHilightPercent(int num){

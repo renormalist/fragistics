@@ -336,9 +336,10 @@ bool File::GetFile(string *buf){
 	char tmp[1024];
 
 	buf->erase();
-	while(ReadLine(tmp,1023)!=NULL)
-		(*buf)+=tmp;
-
+	while(ReadLine(tmp,1023)!=NULL) {
+	    (*buf)+=tmp;
+	}
+	
 	Close();
 	return true;
 }
@@ -387,7 +388,7 @@ int OS::GetVersion(char *ver,int size){
 #else //WIN32
 
 	if(size>=10){
-		sprintf(ver,"1.4");
+		sprintf(ver,"1.5.2");
 		return 0;
 	}
 	return 10;

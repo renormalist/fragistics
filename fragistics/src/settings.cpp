@@ -28,39 +28,37 @@ USA
 
 */
 
-
-
 #include "settings.h"
 
 extern OS os;
 
-ConfigFile::ConfigFile(const char *name, bool newfile){
+ConfigFile::ConfigFile(const char *name, bool newfile) {
 	filename=name;
 	lastaccess=NULL;
 
+	printf ("Use config file %s\n", filename.c_str());
+	
 	if(!newfile){
-		File *fp=os.GetFile(filename.c_str());
-
-		char line[1024];
-		string section;
-		section="";
-		if(fp->OpenRead()){
-			while(fp->ReadLine(line,1023)!=NULL){
-				if(line[0]=='['){
-					//new section
-					char *ptr=strchr(line,']');
-					if(ptr!=NULL)
-						*ptr='\0';
-					section=(&line[1]);
-				}else{
-					//normal line
-					head.AddLineToSection(line,(char*)section.c_str());
-				}
-			}
+	    File *fp=os.GetFile(filename.c_str());
+	    char line[1024];
+	    string section;
+	    section="";
+	    if(fp->OpenRead()){
+		while(fp->ReadLine(line,1023)!=NULL) {
+		    if(line[0]=='['){
+			//new section
+			char *ptr=strchr(line,']');
+			if(ptr!=NULL)
+			    *ptr='\0';
+			section=(&line[1]);
+		    }else{
+			//normal line
+			head.AddLineToSection(line,(char*)section.c_str());
+		    }
 		}
-		delete fp;
+	    }
+	    delete fp;
 	};
-
 }
 
 int ConfigFile::Write(){
@@ -113,11 +111,17 @@ int Settings::ParseSettings(char *filename, int argc_, char **argv_){
 	int i;
 	char numbuf[50];
 	string temp,temp1;
-
-	cfgfile = new ConfigFile(filename);
+	string cfgfile_name; // ss5
+	    
 	argc=argc_;
 	argv=argv_;
 
+	// Take name of config file from args. If not given then
+	// FindSetting() handles "MAIN/cfgfile as special case // ss5
+	FindSetting(&cfgfile_name, "MAIN","cfgfile", "fragistics.conf");
+	
+	//cfgfile = new ConfigFile(filename);
+	cfgfile = new ConfigFile(cfgfile_name.c_str()); // ss5
 
 	//settings
 
@@ -294,6 +298,7 @@ int Settings::ParseSettings(char *filename, int argc_, char **argv_){
 
 
 bool Settings::FindSetting(string *value, const char* section,const char* name, const char* default_){
+	int i;
 	string temp;
 	value->erase();
 	//first look in cmdline params
@@ -302,16 +307,25 @@ bool Settings::FindSetting(string *value, const char* section,const char* name, 
 	temp+="/";
 	temp+=name;
 
-	int i;
 	for(i=0;i<argc;i++){
-		if(!strcmp(argv[i],temp.c_str())){
-		    printf ("-> matched argv[%d] = %s == %s \n", i, //argv[i], temp.c_str()); // ss5
-			//found match - if next param doesn't start with \, return it  else return blank
-			if(i+1 < argc && argv[i+1][0]!=initChar){
-				(*value)=argv[i+1];
-			}
-			return true;
+	    if(strcmp(argv[i],temp.c_str()) == 0) {
+		//found match - if next param doesn't start with \,
+		// return it  else return blank
+		if(i+1 < argc && argv[i+1][0]!=initChar) {
+		    (*value)=argv[i+1];
 		}
+		return true;
+	    }
+	}
+
+	// ss5:
+	// special case \MAIN/cfgfile: if not found in cmdline
+	// options, we return a hardcoded default value,
+	// because we can't search for it in itself
+	// Also known as the "Henne/Ei-Problem" :-)
+	if(strcmp(section,"MAIN") == 0 && strcmp(name,"cfgfile") == 0) {
+	    (*value) = "fragistics.conf";
+	    return true;
 	}
 
 	// didn't find it in cmdline - look in config file
@@ -323,6 +337,13 @@ bool Settings::FindSetting(string *value, const char* section,const char* name, 
 	}
 	return true;
 
+}
+
+int Settings::Write(){
+    //todo: make this safer by first deleting filename.old if it exists
+    //		then renaming filname to filename.old
+    //		and finally writing out filename
+    return cfgfile->Write();
 }
 
 	
