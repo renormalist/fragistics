@@ -83,12 +83,12 @@ bool GameslogParser::Parse(int startline){
 	
 	//printf ("DBG: %d: %s", linecount, line); // ss5
 	evt = ParseLine(line);
-	//evt->print (); // ss5
+	evt->print (); // ss5
 
 	switch(evt->event){
 	case EVENT_GAMESTART:{
 	  //printf ("DBG: *** EVENT_GAMESTART\n");
-	    evt->print (); // ss5
+	  //evt->print (); // ss5
 	    if(currentgame==NULL){
 	      //printf ("DBG: *** a\n");
 		currentgame= new Game(evt->name,
@@ -235,6 +235,7 @@ bool GameslogParser::Parse(int startline){
 	    break;
 	}
 	case EVENT_PLAYERINFO:{
+	  //evt->print (); // ss5
 	    break;
 	}
 	    
@@ -255,6 +256,9 @@ bool GameslogParser::Parse(int startline){
     delete fp;
     return true;
 }
+
+// notiz:
+// 21662
 
 GameEvent* GameslogParser::ParseLine(char *line){
     GameEvent *evt=new GameEvent();
@@ -403,17 +407,53 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		    evt->msg=(ptr2+1);
 		}
 		else if(!strcmp("ClientUserinfoChanged:",ptr1)){
-		    evt->event = EVENT_PLAYERINFO;
+		  evt->event = EVENT_PLAYERINFO;
 		    ptr1=ptr2+1;
 		    ptr2=strchr(ptr1,' ');
 		    if(ptr2!=NULL){
+
+		      string userinfo = string (ptr2);
+		      //printf ("DBG: *** ClientUserinfoChanged: <%s>\n", ptr2);
+		      //printf ("DBG: * hmodel: %s\n", findValueToKey (ptr2, "hmodel").c_str());
+		      //printf ("DBG: * model: %s\n", findValueToKey (ptr2, "model").c_str());
+		      //printf ("DBG: * c1: %s\n", findValueToKey (ptr2, "c1").c_str());
+		      //printf ("DBG: * hc: %s\n", findValueToKey (ptr2, "hc").c_str());
+		      //printf ("DBG: * st: %s\n", findValueToKey (ptr2, "st").c_str());
+		      //printf ("DBG: * rt: %s\n", findValueToKey (ptr2, "rt").c_str());
+		      //printf ("DBG: * c2: %s\n", findValueToKey (ptr2, "c2").c_str());
+		      //printf ("DBG: * r: %s\n", findValueToKey (ptr2, "r").c_str());
+		      //printf ("DBG: * t: %s\n", findValueToKey (ptr2, "t").c_str());
+		      //printf ("DBG: * l: %s\n", findValueToKey (ptr2, "l").c_str());
+		      //printf ("DBG: * w: %s\n", findValueToKey (ptr2, "w").c_str());
+		      //printf ("DBG: * n: %s\n", findValueToKey (ptr2, "n").c_str());
+		      //printf ("DBG: * A: %s\n", findValueToKey (ptr2, "A").c_str());
+		      //printf ("DBG: * skill: <%s>\n", findValueToKey (ptr2, "skill").c_str());
+
 			*ptr2='\0';
 			evt->player = atoi(ptr1);
 			
 			ptr1=ptr2+1;
 			
 			evt->msg = ptr1;
+
+			// string values
+			strncpy (evt->name, findValueToKey (userinfo, "n").c_str(), 48);
+			evt->name[49]='\0';
 			
+			strncpy (evt->model, findValueToKey (userinfo, "model").c_str(), 48);
+			evt->model[49]='\0';
+			
+			// int values
+			evt->team   = atoi(findValueToKey (userinfo, "t").c_str());
+			evt->how    = atoi(findValueToKey (userinfo, "hc").c_str());
+			evt->wins   = atoi(findValueToKey (userinfo, "w").c_str());
+			evt->losses = atoi(findValueToKey (userinfo, "l").c_str());
+			string skill = findValueToKey (userinfo, "skill");
+			if (skill != "") {
+			  evt->other  = atoi (skill.c_str());
+			}
+
+			/*
 			ptr1=strstr(ptr1,"n\\");
 			if(ptr1!=NULL){
 			    ptr1+=2;
@@ -436,7 +476,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 					    *ptr2='\0';
 					    
 					    strncpy(evt->model,ptr1,48);
-					    evt->name[49]='\0';
+					    evt->model[49]='\0'; // ss5, war evt->name
 					    
 					    ptr1=strstr(ptr2+1,"hc\\");
 					    if(ptr1!=NULL){
@@ -474,6 +514,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 				}
 			    }
 			}
+			*/
 		    }
 		}else if(!strcmp("Exit:",ptr1)){
 		    evt->event = EVENT_LIMITHIT;
@@ -542,3 +583,49 @@ GameEvent* GameslogParser::ParseLine(char *line){
     return evt;
 }
 
+string GameslogParser::findValueToKey (string line, char *key) {
+  char *foundkey;
+  char *foundvalue;
+  char *cursor1;
+  char *cursor2;
+  char *retVal;
+  const char *linestr;
+  int len;
+  string retStr;
+  
+  string searchkey = "\\";
+  searchkey += key;  
+  searchkey += "\\";
+  linestr = line.c_str();
+  foundkey = strstr (linestr, searchkey.c_str());
+  if (foundkey == NULL) { // not found, try beginning with space
+    string searchkey = " ";
+    searchkey += key;
+    searchkey += "\\";  
+    foundkey = strstr (linestr, searchkey.c_str());
+  }
+  if (foundkey == NULL) { // still not found, return empty string
+    return string ("");
+  }
+  
+  cursor1 = foundkey + searchkey.length(); // cursor ist after key, i.e. before value
+
+  // search beginning of value starting with '\'
+  while ((*cursor1 == '\\') || (*cursor1 == ' ')) { // overread '\'
+    cursor1++;
+  }
+  cursor2 = cursor1;
+  while ((*cursor2 != '\\') && (*cursor2 != '\0') && (*cursor2 != '\n')) { // until next '\'
+    cursor2++;
+  }
+  //   \\value\
+  //     1    2
+  len = cursor2 - cursor1;
+  retVal = (char *) malloc (len * sizeof(char) + 1);
+  strncpy (retVal, cursor1, len);
+  retVal [len] = '\0';
+  retStr = string (retVal);
+  free (retVal);
+
+  return retStr;
+}

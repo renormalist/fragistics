@@ -24,6 +24,7 @@ public:
     
 protected:
     GameEvent* ParseLine(char *line);
+    string findValueToKey (string line, char *key);
     
     
 };

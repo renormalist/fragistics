@@ -1,0 +1,4 @@
+- crashes with incomplete/incorrect say: lines
+- the simplified playername for use in filenames isn't
+  generated in a "eineindeutig" way. Many similar playernames
+  lead to the same simple-playernme (and therefore filename)
