@@ -1,9 +1,0 @@
-This is the directory where the output html is generated if
-the rawfragistics engine is used without its frontend. 
-If the frontend (fragistics) is used, the output is generated 
-depending on the logfilename, e.g.: 
-  $HOME/.fragistics/stats_<logfilebasename>/
-
-This readme mainly exists to ensure the directory isn't pruned
-on cvs update.
-

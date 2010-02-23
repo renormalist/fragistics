@@ -1,8 +1,0 @@
-<html><head>
-<title>Map ##MAP_MAPNAME##</title>
-</head><body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
-<CENTER>
-<h1>##MAP_MAPNAME##</H1>
-<img src="##USER_image_path##/levelshots/##MAP_MAPIMAGE##" width="256" height="256"><br>
-<a href="maplist.html">Map List</a> <a href="gamelist.html">Game List</a> <a href="stats.html">Overall Stats</a> <a href="playerlist.html">Player stats</a>
-<P><HR><P>
