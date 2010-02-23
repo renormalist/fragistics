@@ -1,0 +1,112 @@
+$$gameheader$$
+<h2>Game Kill Tables</h2>
+Other stats of this game: <a href="game_##STATS_GAMENUMBER##.html"><b>Game Scores<b></A> <a href="gameplayer_##STATS_GAMENUMBER##.html">Player Stats</A><BR>
+<P>
+
+All Kills<BR>
+##GAME_KILLTABLE.TOTAL##
+<P>
+
+<HR>
+<P>
+<TABLE>
+<TR><TD>
+Hitscan Kills<BR>
+##GAME_KILLTABLE.A_HITSCAN_KILL##
+<P>
+</TD><TD>
+Non-Hitscan Kills<BR>
+##GAME_KILLTABLE.A_NONHITSCAN_KILL##
+<P>
+</TD></TR>
+
+<TR><TD>
+Bullet Type Kills<BR>
+##GAME_KILLTABLE.A_BULLET_KILL##
+<P>
+</TD><TD>
+Explosion Type Kills<BR>
+##GAME_KILLTABLE.A_EXPLOSIVE_KILL##
+<P>
+</TD></TR>
+
+<TR><TD>
+Energy Type Kills<BR>
+##GAME_KILLTABLE.A_ENERGY_KILL##
+<P>
+</TD><TD>
+Other Type Kills<BR>
+##GAME_KILLTABLE.A_OTHER_KILL##
+<P>
+</TD></TR></TABLE>
+
+
+
+<HR>
+<P>
+
+<TABLE><TR><TD>
+Gauntlet Kills<BR>
+##GAME_KILLTABLE.GAUNTLET_KILL##
+</TD><TD>
+Machinegun Kills<BR>
+##GAME_KILLTABLE.MACHINEGUN_KILL##
+</TD><TD>
+Shotgun Kills<BR>
+##GAME_KILLTABLE.SHOTGUN_KILL##
+</TD></TR></TABLE>
+<P>
+
+<TABLE><TR><TD>
+Grenade Kills<BR>##GAME_KILLTABLE.A_GRENADE_KILL##
+</TD><TD>
+Direct Grenade Kills<BR>##GAME_KILLTABLE.GRENADE_KILL_DIRECT##<P>
+</TD><TD>
+Grenade Splash Kills<BR>##GAME_KILLTABLE.GRENADE_KILL_SPLASH##<P>
+</TD></TR></TABLE>
+<P>
+
+<TABLE><TR><TD>
+Rocket Kills<BR>##GAME_KILLTABLE.A_ROCKET_KILL##<P>
+</TD><TD>
+Direct Rocket Kills<BR>##GAME_KILLTABLE.ROCKET_KILL_DIRECT##<P>
+</TD><TD>
+Rocket Splash Kills<BR>##GAME_KILLTABLE.ROCKET_KILL_SPLASH##<P>
+</TD></TR></TABLE>
+<P>
+
+<TABLE><TR><TD>
+Lightning Kills<BR>
+##GAME_KILLTABLE.LIGHTNING_KILL##
+</TD><TD>
+Railgun Kills<BR>
+##GAME_KILLTABLE.RAILGUN_KILL##
+</TD><TD>
+TeleFrag Kills<BR>
+##GAME_KILLTABLE.TELEFRAG_KILL##
+</TD></TR></TABLE>
+<P>
+
+<TABLE><TR><TD>
+Plasma Kills<BR>##GAME_KILLTABLE.A_PLASMA_KILL##
+</TD><TD>
+Direct Plasma Kills<BR>##GAME_KILLTABLE.PLASMA_KILL_DIRECT##<P>
+</TD><TD>
+Plasma Splash Kills<BR>##GAME_KILLTABLE.PLASMA_KILL_SPLASH##<P>
+</TD></TR></TABLE>
+<P>
+
+<TABLE><TR><TD>
+BFG Kills<BR>##GAME_KILLTABLE.A_BFG_KILL##
+</TD><TD>
+Direct BFG Kills<BR>##GAME_KILLTABLE.BFG_KILL_DIRECT##<P>
+</TD><TD>
+BFG Splash Kills<BR>##GAME_KILLTABLE.BFG_KILL_SPLASH##<P>
+</TD></TR></TABLE>
+<P>
+
+
+<P><HR><P>
+##CREDIT##
+</CENTER>
+</body></html>

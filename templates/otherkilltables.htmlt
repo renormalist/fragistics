@@ -1,0 +1,55 @@
+<html><head>
+<title>Overall Stats Template</title>
+</head><body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<center><h1>Killer/Killee Tables by Weapon</H1>
+For players who played at least 
+##SETTINGS_PLAYERGAMELIMIT## Games,
+for at least ##SETTINGS_PLAYERTIMELIMIT.MINUTES## Minutes,
+and got at least ##SETTINGS_PLAYERKILLLIMIT## Kills .<P>
+
+<P><HR><P>
+<a href="gamelist.html">Game List</a> <a href="playerlist.html">Player List</a> <a href="maplist.html">Map List</a> <P>
+<a href="stats.html">Overall Stats</a> <a href="allkilltable.html">All Kills Killtables</a>
+<P><HR><P>
+
+Gauntlet Kills<BR>
+##STATS_KILLTABLE_C.GAUNTLET_KILL##
+<P>
+
+Machinegun Kills<BR>
+##STATS_KILLTABLE_C.MACHINEGUN_KILL##
+<P>
+
+Shotgun Kills<BR>
+##STATS_KILLTABLE_C.SHOTGUN_KILL##
+<P>
+
+Grenade Kills<BR>
+##STATS_KILLTABLE_C.A_GRENADE_KILL##
+<P>
+
+Rocket Kills<BR>
+##STATS_KILLTABLE_C.A_ROCKET_KILL##
+<P>
+
+Lightning Kills<BR>
+##STATS_KILLTABLE_C.LIGHTNING_KILL##
+<P>
+
+Railgun Kills<BR>
+##STATS_KILLTABLE_C.RAILGUN_KILL##
+<P>
+
+Plasma Kills<BR>
+##STATS_KILLTABLE_C.A_PLASMA_KILL##
+<P>
+
+BFG Kills<BR>
+##STATS_KILLTABLE_C.A_BFG_KILL##
+<P>
+
+
+<P>
+</CENTER>
+<P><HR><P>##CREDIT##
+</body></html>

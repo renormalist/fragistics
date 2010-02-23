@@ -1,0 +1,23 @@
+<html><head>
+<title>All Kills</title>
+</head><body bgcolor="##HTML_BGCOLOR##" text="##HTML_TEXT##" link="##HTML_LINK##" vlink="##HTML_VLINK##" alink="##HTML_ALINK##">
+<center><h1>All Kills Killer/Killee Table</H1>
+For players who played at least 
+##SETTINGS_PLAYERGAMELIMIT## Games,
+for at least ##SETTINGS_PLAYERTIMELIMIT.MINUTES## Minutes,
+and got at least ##SETTINGS_PLAYERKILLLIMIT## Kills .<P>
+
+
+<P><HR><P>
+<a href="gamelist.html">Game list</a> <a href="maplist.html">Map List</a> <a href="playerlist.html">Player List</a><P>
+<a href="stats.html">Overall Stats</a> <A href="morekilltables.html">Killtables by Weapon Type</a> <a href="otherkilltables.html">Killtables by Weapon</a>
+<P><HR><P>
+
+All Kills<BR>
+##STATS_KILLTABLE_C.TOTAL_KILLS##
+<P>
+
+
+</CENTER>
+<P><HR><P>##CREDIT##
+</body></html>
