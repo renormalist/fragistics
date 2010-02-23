@@ -1,6 +1,0 @@
-			     ____________
-			     INSTALLATION
-
-    ./configure
-    make                    (ignore compiler warnings)
-    make install            (as user "root")
