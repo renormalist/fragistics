@@ -32,6 +32,7 @@ USA
 #include "database.h"
 #include "settings.h"
 #include <time.h>
+#include <stdlib.h>
 
 extern Settings settings;
 

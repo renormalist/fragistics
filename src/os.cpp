@@ -36,9 +36,10 @@ USA
 // if something here doesn't work, put an #ifdef WIN32 around it and add an
 // ifdef for your OS.  Then send the update to troz_@xoommail.com for future releases 
 
-#include <stdio.h>
-#include "os.h"
 #include "defines.h"
+#include "os.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 

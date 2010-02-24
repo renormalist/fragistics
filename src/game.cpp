@@ -30,6 +30,7 @@ USA
 
 #include "game.h"
 #include "htmlfile.h"
+#include <stdlib.h>
 
 
 extern char kill_strings[26][32];
@@ -118,7 +119,7 @@ string Game::GetMapname()
     return mapname;
 }
 
-int Game::GetKills(int type=0)
+int Game::GetKills(int type)
 {
     return all_kills[type];
 }
@@ -314,8 +315,9 @@ void Game::HandleEvent(GameEvent *evt){
 			}
 		case EVENT_SAY:{
 				msgs++;
-				char name[50],*cptr;
-				cptr=strchr(evt->msg.c_str(),':');
+				char name[50];
+				const char *cptr;
+				cptr = strchr(evt->msg.c_str(),':');
 				int dist=cptr-evt->msg.c_str();
 				if(dist<48){
 					memcpy(name,evt->msg.c_str(),dist);
@@ -335,7 +337,8 @@ void Game::HandleEvent(GameEvent *evt){
 			}
 		case EVENT_SAY_TEAM:{
 				msgs_team++;
-				char name[50],*cptr;
+				char name[50];
+				const char *cptr;
 				cptr=strchr(evt->msg.c_str(),':');
 				int dist=cptr-evt->msg.c_str();
 				if(dist<48){

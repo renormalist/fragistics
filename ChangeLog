@@ -1,3 +1,29 @@
+2010-02-24  Roland Kuebert <rkuebert@users.sourceforge.net>
+
+	* AUTHORS: Added Roland Kuebert to authors list.
+
+	* crosstable.cpp (intcomp): Compare ints via long conversion in order to
+	not loose information.
+	
+	* game.cpp (GetKills): Fixed erroneous definition of default argument.
+	
+	* game.cpp (GetKills): Fixed erroneous definition of default argument.
+
+	* gameslogparser.cpp (ParseLine): Adapted to glib changes.
+		(findValueToKey): Likewise.
+	* game.cpp (HandleEvent): Likewise.
+
+	* database.cpp: Include stdlib.h.
+	* game.cpp: Include stdlib.h.
+	* gameslogparser.cpp: Include stdlib.h.
+	* htmlfile.cpp: Include stdlib.h.
+	* os.cpp: Include stdlib.h.
+	* os.h: Include string.h.
+	* player.cpp: Include stdlib.h.
+	* settings.cpp: Include stdlib.h.
+	* stats.cpp: Include stdlib.h.
+
+
 October 5 2002 - Version 1.6.0; The "better live" edition.
 
 	Fragistics is now a perl frontend to the original raw fragistics

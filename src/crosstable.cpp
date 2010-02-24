@@ -357,9 +357,9 @@ int
 __cdecl
 #endif
 intcomp(const void* p1,const void* p2){
-	int num1,num2;
-	num1=(int)p1;
-	num2=(int)p2;
+	long num1,num2;
+	num1=(long)p1;
+	num2=(long)p2;
 	if(p1<p2){
 		return 1;
 	}else{

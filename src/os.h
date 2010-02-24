@@ -14,6 +14,7 @@ see os.cpp or main.cpp for license info
 
 
 #include <stdio.h>
+#include <string.h>
 #include <string>
 
 

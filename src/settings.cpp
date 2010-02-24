@@ -28,6 +28,7 @@ USA
 
 */
 
+#include <stdlib.h>
 #include "settings.h"
 
 extern OS os;

@@ -29,6 +29,7 @@ USA
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "player.h"
 #include "settings.h"
 #include "stats.h"

@@ -19,6 +19,7 @@
 */
 
 
+#include <stdlib.h>
 #include "gameslogparser.h"
 
 //extern Settings settings;
@@ -262,13 +263,14 @@ bool GameslogParser::Parse(int startline){
 
 GameEvent* GameslogParser::ParseLine(char *line){
     GameEvent *evt=new GameEvent();
-    char *ptr1,*ptr2;
+    const char *ptr1;
+		char *ptr2;
     std::string eventMsg;
     line[1023]='\0';
     
     if(line!=NULL){
-	ptr1=line;
-	ptr2=strchr(ptr1,':');
+	ptr1 = line;
+	ptr2 = const_cast<char*>(strchr(ptr1,':'));
 	if(ptr2!=NULL){
 	    *ptr2='\0';
 	    evt->time_min=atoi(ptr1);
@@ -282,7 +284,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 	    //after 1000 minutes	:1342:31Item: 3 weapon_shotgun
 	    while(*ptr1>='0' && *ptr1<='9' || *ptr1==' ' ) ptr1++;
 	    
-	    ptr2=ptr1;
+	    ptr2 = const_cast<char*>(ptr1);
 	    //find end of info type
 	    while(*ptr2!='\0' && *ptr2!='\r' && *ptr2!='\n' && *ptr2!=' ' &&*ptr2!='\t') {
 		ptr2++;
@@ -299,8 +301,8 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		    ptr1=strstr(ptr2+1,"mapname\\");
 		    if(ptr1!=NULL){
 			ptr1+=8;
-			ptr2=ptr1; // ss5: ?
-			ptr2=strchr(ptr1,'\\');
+			ptr2 = const_cast<char*>(ptr1); // ss5: ?
+			ptr2 = const_cast<char*>(strchr(ptr1,'\\'));
 			if(ptr2!=NULL){
 			    *ptr2='\0';
 			    strcpy(evt->name ,ptr1);
@@ -347,7 +349,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		else if(!strcmp("Item:",ptr1)){
 		    evt->event = EVENT_ITEMPICKUP;
 		    ptr1=ptr2+1;
-		    ptr2=strchr(ptr1,' ');
+		    ptr2 = const_cast<char*>(strchr(ptr1,' '));
 		    if(ptr2!=NULL){
 			*ptr2='\0';
 			evt->player = atoi(ptr1);
@@ -373,19 +375,19 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		else if(!strcmp("Kill:",ptr1)){
 		    evt->event = EVENT_KILL;
 		    ptr1=ptr2+1;
-		    ptr2=strchr(ptr1,' ');
+		    ptr2 = const_cast<char*>(strchr(ptr1,' '));
 		    if(ptr2!=NULL){
 			*ptr2='\0';
 			evt->player = atoi(ptr1);
 			
 			ptr1=ptr2+1;
-			ptr2=strchr(ptr1,' ');
+			ptr2 = const_cast<char*>(strchr(ptr1,' '));
 			if(ptr2!=NULL){
 			    *ptr2='\0';
 			    evt->other = atoi(ptr1);
 			    
 			    ptr1=ptr2+1;
-			    ptr2=strchr(ptr1,':');
+			    ptr2 = const_cast<char*>(strchr(ptr1,':'));
 			    if(ptr2!=NULL){
 				*ptr2='\0';
 				evt->how = atoi(ptr1);
@@ -409,7 +411,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		else if(!strcmp("ClientUserinfoChanged:",ptr1)){
 		  evt->event = EVENT_PLAYERINFO;
 		    ptr1=ptr2+1;
-		    ptr2=strchr(ptr1,' ');
+		    ptr2 = const_cast<char*>(strchr(ptr1,' '));
 		    if(ptr2!=NULL){
 
 		      string userinfo = string (ptr2);
@@ -520,15 +522,15 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		    evt->event = EVENT_LIMITHIT;
 		    evt->how=LIMIT_UNKNOWN;
 		    ptr1=ptr2+1;
-		    ptr2=strstr(ptr1,"Time");
+		    ptr2 = const_cast<char*>(strstr(ptr1,"Time"));
 		    if(ptr2!=NULL){
 			evt->how=LIMIT_TIME;
 		    }else{
-			ptr2=strstr(ptr1,"Frag");
+			ptr2 = const_cast<char*>(strstr(ptr1,"Frag"));
 			if(ptr2!=NULL){
 			    evt->how=LIMIT_FRAG;
 			}else{
-			    ptr2=strstr(ptr1,"Capture");
+			    ptr2 = const_cast<char*>(strstr(ptr1,"Capture"));
 			    if(ptr2!=NULL){
 				evt->how=LIMIT_CAPTURE;
 			    }	
@@ -538,7 +540,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 		    evt->event = EVENT_PLAYER_SCORE;
 		    evt->player=-1;
 		    ptr1=ptr2+1;
-		    ptr2=strchr(ptr1,' ');
+		    ptr2 = const_cast<char*>(strchr(ptr1,' '));
 		    if(ptr2!=NULL){
 			*ptr2='\0';
 			evt->other = atoi(ptr1);
@@ -553,7 +555,7 @@ GameEvent* GameslogParser::ParseLine(char *line){
 			    ptr1=strstr(ptr1,"client:");
 			    if(ptr1!=NULL){
 				ptr1+=7;
-				ptr2=strchr(ptr1+1,' ');
+				ptr2 = const_cast<char*>(strchr(ptr1+1,' '));
 				if(ptr2!=NULL)
 				    *ptr2='\0';
 				
@@ -584,10 +586,10 @@ GameEvent* GameslogParser::ParseLine(char *line){
 }
 
 string GameslogParser::findValueToKey (string line, char *key) {
-  char *foundkey;
+  const char *foundkey;
   char *foundvalue;
-  char *cursor1;
-  char *cursor2;
+  const char *cursor1;
+  const char *cursor2;
   char *retVal;
   const char *linestr;
   int len;

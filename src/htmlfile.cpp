@@ -30,6 +30,7 @@ USA
 
 #include "htmlfile.h"
 #include "settings.h"
+#include <stdlib.h>
 
 
 extern OS os;

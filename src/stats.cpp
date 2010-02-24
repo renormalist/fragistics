@@ -29,12 +29,13 @@
 */
 
 
-#include "stats.h"
 #include "game.h"
 #include "htmlfile.h"
 #include "settings.h"
-#include <time.h>
+#include "stats.h"
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
 extern Settings settings;
 extern OS os;
